@@ -1,0 +1,8 @@
+.card{
+  min-height: 13rem;
+}
+#productListButton
+{
+  position: absolute !important;
+  bottom: 1.7rem !important;
+}
