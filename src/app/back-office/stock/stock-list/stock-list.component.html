@@ -1,21 +1,50 @@
 <div class="row">
+  <div class="col-12">
+    <div class="text-right my-2">
+      <a
+        [routerLink]="['/back/stock/addstock']"
+        type="button"
+        class="btn btn-success mx-auto"
+        >Ajouter stock</a
+      >
+    </div>
+  </div>
+  <div class="col-12">
+    <router-outlet></router-outlet>
+  </div>
   <div
     *ngFor="let item of my_Stock; let i = index"
     class="col-12 col-sm-6 col-md-4"
   >
-    <div class="card">
-      <div class="card-body">
-        <h5>{{ item.libelleStock | uppercase }}</h5>
+    <div
+      [style.backgroundColor]="item.qte >= item.qteMin ? '' : '#dc3545'"
+      class="card"
+    >
+      <div
+        [class]="item.qte >= item.qteMin ? 'card-body' : 'card-body stockRp'"
+      >
+        <h5 style="font-weight: bold">{{ item.libelleStock | uppercase }}</h5>
 
         <p *ngIf="item.qteMin >= item.qte" class="card-text">
-          votre stock en <span style="font-weight: 700;" >rupture</span> la quantité minimale est {{ item.qteMin }} mais
-          vous avez {{ item.qte }} produit en stock.
+          votre stock en <span class="fontWeight">rupture</span> la quantité
+          minimale est <span class="fontWeight">{{ item.qteMin }}</span> mais
+          vous avez <span class="fontWeight">{{ item.qte }}</span> produit en
+          stock.
         </p>
         <p *ngIf="item.qteMin < item.qte" class="card-text">
-          votre avez {{ item.qte }} produit en stock et votre quantité minimale est {{ item.qteMin }}
+          votre avez <span class="fontWeight">{{ item.qte }}</span> produit en
+          stock et votre quantité minimale est
+          <span class="fontWeight">{{ item.qteMin }}</span>
         </p>
-
-        <a id="productListButton" class="btn btn-primary">Go somewhere</a>
+        <button
+          [disabled]="item.produitList.length < 0"
+          style="color: white"
+          id="productListButton"
+          class="btn btn-dark"
+          [routerLink]="['/back/stock/detailstock',item.idStock]"
+        >
+          Afficher les produit
+        </button>
       </div>
     </div>
   </div>

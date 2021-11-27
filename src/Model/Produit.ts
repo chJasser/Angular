@@ -6,10 +6,9 @@ import { Stock } from "./Stock";
 
 export class Produit{
     idProduit:number;
-    code:number;
+    code:string;
     libelle:string;
     prixUnitaire:number;
-
     rayon?:rayon;
     stock?:Stock;
     detailproduit?:detailProduit;

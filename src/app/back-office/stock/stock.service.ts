@@ -26,6 +26,10 @@ export class StockService {
     return this.HS.get<Stock[]>(this.url + 'retrieve-all-stocks');
   }
 
+  getStockById(id: number): Observable<Stock> {
+    return this.HS.get<Stock>(this.url + 'retrieve-stock/' + id);
+  }
+
   addStock(stock: Stock): Observable<Stock> {
     return this.HS.post<Stock>(this.url + 'add-stock', stock, this.httpOptions);
   }
