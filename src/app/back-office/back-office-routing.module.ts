@@ -15,6 +15,13 @@ const routes: Routes = [
             (m) => m.StockModule
           ),
       },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./product-back/product-back.module').then(
+            (m) => m.ProductBackModule
+          ),
+      }
     ],
   },
 ];

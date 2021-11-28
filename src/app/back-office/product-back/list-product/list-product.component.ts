@@ -2,17 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Produit } from 'src/Model/Produit';
 import { ProductSService } from 'src/ServicesProduct/product-s.service';
 
+
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  selector: 'app-list-product',
+  templateUrl: './list-product.component.html',
+  styleUrls: ['./list-product.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ListProductComponent implements OnInit {
+
+  ListProduct:Produit[]
 
   constructor(private ps:ProductSService) { }
-  ListProduct:Produit[];
-
-
   getAllproduits(){
     this.ps.getAllProductsByJson().subscribe((res) => {
       this.ListProduct = res;
@@ -24,5 +24,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
 this.getAllproduits();
   }
+
+
 
 }

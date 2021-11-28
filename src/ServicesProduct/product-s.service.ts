@@ -40,7 +40,7 @@ n=n+1
 
 getAllProductsByJson():Observable<Produit[]>{
 
-    return this.HS.get<Produit[]>("http://localhost:8089/SpringMVC/SpringMVC/produit/retrieve-all-produits");
+    return this.HS.get<Produit[]>("http://localhost:8089/SpringMVC/produit/retrieve-all-produits");
     }
 
 

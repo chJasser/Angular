@@ -24,14 +24,26 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-        <li  class="nav-item ml-1">
-          <a href="pages/calendar.html" class="nav-link">
+       
+             <li  class="nav-item ml-1">
+              <a [routerLink]="['/back']" class="nav-link">
+                <i class="fas fa-product-hunt"></i>
+                <p>
+                  Produit
+                </p>
+              </a>
+            </li>
+       
+             <li  class="nav-item ml-1">
+          <a [routerLink]="['/back/stock']" class="nav-link">
             <i class="fas fa-cubes"></i>
             <p>
               Stock
             </p>
           </a>
         </li>
+
+        
         <li class="nav-item">
           <a href="pages/gallery.html" class="nav-link">
             <i class="nav-icon far fa-image"></i>

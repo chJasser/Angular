@@ -1,0 +1,89 @@
+<!-- <form [formGroup]="Product" (submit)="addProduct()">
+    <div class="col-md-12">
+      <label for="inputId" class="form-label">Id</label>
+      <input
+        formControlName="id"
+        type="number"
+        name="inputId"
+        class="form-control"
+        id="inputId"
+        readonly
+        [ngClass]="{
+          'is-invalid': stock.get('id').touched && stock.get('id').invalid
+        }"
+      />
+    </div>
+    <div
+      class="invalid-feedback"
+      *ngIf="stock.get('id').touched && stock.get('id').invalid"
+    >
+      <p *ngIf="stock.get('id').errors.required">id est oblogatoire</p>
+    </div>
+  
+    <div class="col-md-12">
+      <label for="inputLibelle" class="form-label">Libelle stock</label>
+      <input
+        formControlName="libelleStock"
+        type="text"
+        name="libelleStock"
+        class="form-control"
+        id="inputLibelle"
+        [ngClass]="{
+          'is-invalid':
+            stock.get('libelleStock').touched && stock.get('libelleStock').invalid
+        }"
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          stock.get('libelleStock').touched && stock.get('libelleStock').invalid
+        "
+      >
+        <p *ngIf="stock.get('libelleStock').errors.required">
+          Libelle stock est obligatoire
+        </p>
+        <p *ngIf="stock.get('libelleStock').errors.pattern">
+          Libelle stock accepte seulement des caractéres
+        </p>
+        <p *ngIf="stock.get('libelleStock').errors.minlength">
+          la longueur minimale est
+          {{ stock.get("libelleStock").errors.minlength.requiredLength }}
+          characters
+        </p>
+  
+        <p *ngIf="stock.get('libelleStock').errors.maxlength">
+          la longueur maximale est
+          {{ stock.get("libelleStock").errors.maxlength.requiredLength }}
+          characters
+        </p>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <label for="inputQteMin" class="form-label">Qauntité minimale</label>
+      <input
+        formControlName="qteMin"
+        type="number"
+        name="qteMin"
+        class="form-control"
+        id="inputQteMin"
+        [ngClass]="{
+          'is-invalid': stock.get('qteMin').touched && stock.get('qteMin').invalid
+        }"
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="stock.get('qteMin').touched && stock.get('qteMin').invalid"
+      >
+        <p *ngIf="stock.get('qteMin').errors.required">
+          Qauntite minimale est obligatoire
+        </p>
+        <p *ngIf="stock.get('qteMin').errors.pattern">
+          Quantité minimale accepte seulement des nombres
+        </p>
+      </div>
+    </div>
+    <div class="col-md-12 my-2">
+      <button class="btn btn-primary">Ajouter Produit</button>
+    </div>
+  </form>
+   -->

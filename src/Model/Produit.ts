@@ -5,22 +5,20 @@ import { Stock } from "./Stock";
 
 
 export class Produit{
-    idProduit:number;
+    idProduit?:number;
     code:number;
     libelle:string;
     prixUnitaire:number;
-
     rayon?:rayon;
     stock?:Stock;
-    detailproduit?:detailProduit;
+    detailproduit:detailProduit;
 
 
-    /*constructor(id,code,libelle,prixunitaire,tauxTva){
-        this.id=id
+    constructor(code,libelle,prixunitaire,detailproduit){
         this.code=code
         this.libelle=libelle
-        this.prixunitaire=prixunitaire
-        this.tauxTva=tauxTva
+        this.prixUnitaire=prixunitaire
+        this.detailproduit=detailproduit
     }
-    */
+    
     }
