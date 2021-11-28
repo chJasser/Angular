@@ -1,5 +1,5 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Stock } from 'src/Model/Stock';
 import { StockService } from '../stock.service';
 
@@ -10,6 +10,9 @@ import { StockService } from '../stock.service';
 })
 export class AddStockComponent implements OnInit {
   constructor(private stockService: StockService) {}
+
+  @Output() addedStock = new EventEmitter<Stock>();
+  @Output() addStockStatus = new EventEmitter<boolean>();
   stock: FormGroup;
   myStock: Stock;
   ngOnInit(): void {
@@ -33,10 +36,19 @@ export class AddStockComponent implements OnInit {
       this.stock.get('qteMin').value,
       this.stock.get('libelleStock').value
     );
-
-    console.log(this.myStock);
     this.stockService.addStock(this.myStock).subscribe((res) => {
-      console.log('stock created!', res);
+      console.log('stock created!' + res);
+
     });
+  }
+
+  stockAdded() {
+    this.stock.setValue({
+      id: '',
+      qteMin: '',
+      libelleStock: '',
+    });
+    this.addedStock.emit(this.myStock);
+    this.addStockStatus.emit(false);
   }
 }

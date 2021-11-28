@@ -9,6 +9,8 @@ import { StockService } from '../stock.service';
 })
 export class StockListComponent implements OnInit {
   my_Stock: Stock[];
+  addstockStatus = false;
+
   constructor(private stockService: StockService) {}
   getAllStocks() {
     this.stockService.getAllStock().subscribe((res) => {
@@ -16,8 +18,17 @@ export class StockListComponent implements OnInit {
       console.log(this.my_Stock);
     });
   }
-
+  toogleAddStock() {
+    this.addstockStatus = !this.addstockStatus;
+  }
   ngOnInit(): void {
     this.getAllStocks();
+  }
+  addStockToList(stock: Stock) {
+    this.my_Stock.push(stock);
+    this.getAllStocks();
+  }
+  toogleStatus() {
+    this.addstockStatus = false;
   }
 }

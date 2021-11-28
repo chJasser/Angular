@@ -1,4 +1,4 @@
-<form [formGroup]="stock" (submit)="addStock()">
+<form [formGroup]="stock" (ngSubmit)="addStock()">
   <div class="col-md-12">
     <label for="inputId" class="form-label">Id</label>
     <input
@@ -83,6 +83,22 @@
     </div>
   </div>
   <div class="col-md-12 my-2">
-    <button class="btn btn-primary">Ajouter stock</button>
+    <button [disabled]="stock.invalid"   data-bs-toggle="modal" data-bs-target="#staticBackdrop"  class="btn btn-primary">Ajouter stock</button>
   </div>
 </form>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Gestion Stock</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       stock ajouté avesuccess
+      </div>
+      <div class="modal-footer">
+        <button  type="button"  (click)="stockAdded()" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>

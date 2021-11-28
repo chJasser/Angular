@@ -2,7 +2,7 @@
   <div class="col-12">
     <div class="text-right my-2">
       <a
-        [routerLink]="['/back/stock/addstock']"
+        (click)="toogleAddStock()"
         type="button"
         class="btn btn-success mx-auto"
         >Ajouter stock</a
@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="col-12">
-    <router-outlet></router-outlet>
+    <app-add-stock *ngIf="addstockStatus" (addStockStatus)="toogleStatus()" (addedStock)="addStockToList($event)" ></app-add-stock>
   </div>
   <div
     *ngFor="let item of my_Stock; let i = index"
@@ -37,11 +37,11 @@
           <span class="fontWeight">{{ item.qteMin }}</span>
         </p>
         <button
-          [disabled]="item.produitList.length < 0"
+          [disabled]="item.produitList.length <= 0"
           style="color: white"
           id="productListButton"
           class="btn btn-dark"
-          [routerLink]="['/back/stock/detailstock',item.idStock]"
+          [routerLink]="['/back/stock/detailstock', item.idStock]"
         >
           Afficher les produit
         </button>
@@ -49,3 +49,4 @@
     </div>
   </div>
 </div>
+

@@ -13,7 +13,6 @@ const routes: Routes = [
       {
         path: '',
         component: StockListComponent,
-        children: [{ path: 'addstock', component: AddStockComponent }],
       },
       {
         path: 'detailstock/:id',
