@@ -15,13 +15,11 @@ export class StockService {
       'Content-Type': 'application/json',
     }),
   };
-  /*   delete(myObject: number): Observable<Stock> {
-    const id = typeof myObject === 'number' ? myObject : myObject;
-    return this.HS.delete<Stock>(
-      'http://localhost:8089/SpringMVC/stock/remove-stock' + '/' + id
-    );
+  deleteStock(id: bigint): Observable<bigint> {
+    const url = this.url + 'remove-stock/' + id;
+    return this.HS.delete<bigint>(url);
   }
- */
+
   getAllStock(): Observable<Stock[]> {
     return this.HS.get<Stock[]>(this.url + 'retrieve-all-stocks');
   }
@@ -32,5 +30,12 @@ export class StockService {
 
   addStock(stock: Stock): Observable<Stock> {
     return this.HS.post<Stock>(this.url + 'add-stock', stock, this.httpOptions);
+  }
+  updateStock(stock: Stock): Observable<Stock> {
+    return this.HS.put<Stock>(
+      this.url + 'modify-stock',
+      stock,
+      this.httpOptions
+    );
   }
 }

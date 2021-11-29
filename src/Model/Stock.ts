@@ -7,8 +7,9 @@ export class Stock {
   libelleStock: string;
   produitList?: Produit[];
 
-  constructor(qteMin, libelleStock) {
+  constructor(qteMin, libelleStock, idStock?) {
     this.qteMin = qteMin;
     this.libelleStock = libelleStock;
+    this.idStock = idStock;
   }
 }
