@@ -15,6 +15,13 @@ const routes: Routes = [
             (m) => m.StockModule
           ),
       },
+      {
+        path: 'rayon',
+        loadChildren: () =>
+          import('./rayon/rayon.module').then(
+            (m) => m.RayonModule
+          ),
+      },
     ],
   },
 ];
