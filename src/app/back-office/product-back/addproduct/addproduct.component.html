@@ -1,89 +1,190 @@
-<!-- <form [formGroup]="Product" (submit)="addProduct()">
+<form [formGroup]="Product" (submit)="addProduct()">
     <div class="col-md-12">
       <label for="inputId" class="form-label">Id</label>
       <input
         formControlName="id"
         type="number"
-        name="inputId"
+        name="id"
         class="form-control"
         id="inputId"
         readonly
         [ngClass]="{
-          'is-invalid': stock.get('id').touched && stock.get('id').invalid
+          'is-invalid': Product.get('id').touched && Product.get('id').invalid
         }"
       />
     </div>
     <div
       class="invalid-feedback"
-      *ngIf="stock.get('id').touched && stock.get('id').invalid"
+      *ngIf="Product.get('id').touched && Product.get('id').invalid"
     >
-      <p *ngIf="stock.get('id').errors.required">id est oblogatoire</p>
+      <p *ngIf="Product.get('id').errors.required">id est oblogatoire</p>
     </div>
   
     <div class="col-md-12">
-      <label for="inputLibelle" class="form-label">Libelle stock</label>
+      <label for="inputcode" class="form-label">code du produit</label>
       <input
-        formControlName="libelleStock"
+        formControlName="code"
         type="text"
-        name="libelleStock"
+        name="code"
         class="form-control"
-        id="inputLibelle"
+        id="inputCode"
         [ngClass]="{
           'is-invalid':
-            stock.get('libelleStock').touched && stock.get('libelleStock').invalid
+            Product.get('code').touched && Product.get('code').invalid
         }"
       />
       <div
         class="invalid-feedback"
         *ngIf="
-          stock.get('libelleStock').touched && stock.get('libelleStock').invalid
+          Product.get('code').touched && Product.get('code').invalid
         "
       >
-        <p *ngIf="stock.get('libelleStock').errors.required">
-          Libelle stock est obligatoire
+        <p *ngIf="Product.get('code').errors.required">
+          code Produit est obligatoire
         </p>
-        <p *ngIf="stock.get('libelleStock').errors.pattern">
-          Libelle stock accepte seulement des caractéres
+        <p *ngIf="Product.get('code').errors.pattern">
+          code Produit accepte seulement des caractéres
         </p>
-        <p *ngIf="stock.get('libelleStock').errors.minlength">
+        <p *ngIf="Product.get('code').errors.minlength">
           la longueur minimale est
-          {{ stock.get("libelleStock").errors.minlength.requiredLength }}
+          {{ Product.get("code").errors.minlength.requiredLength }}
           characters
         </p>
   
-        <p *ngIf="stock.get('libelleStock').errors.maxlength">
+        <p *ngIf="Product.get('code').errors.maxlength">
           la longueur maximale est
-          {{ stock.get("libelleStock").errors.maxlength.requiredLength }}
+          {{ Product.get("code").errors.maxlength.requiredLength }}
           characters
         </p>
       </div>
     </div>
+
     <div class="col-md-12">
-      <label for="inputQteMin" class="form-label">Qauntité minimale</label>
+      <label for="inputlibelle" class="form-label">libelle du produit</label>
       <input
-        formControlName="qteMin"
-        type="number"
-        name="qteMin"
+        formControlName="libelle"
+        type="text"
+        name="libelle"
         class="form-control"
-        id="inputQteMin"
+        id="inputlibelle"
         [ngClass]="{
-          'is-invalid': stock.get('qteMin').touched && stock.get('qteMin').invalid
+          'is-invalid':
+            Product.get('libelle').touched && Product.get('libelle').invalid
         }"
       />
       <div
         class="invalid-feedback"
-        *ngIf="stock.get('qteMin').touched && stock.get('qteMin').invalid"
+        *ngIf="
+          Product.get('libelle').touched && Product.get('libelle').invalid
+        "
       >
-        <p *ngIf="stock.get('qteMin').errors.required">
-          Qauntite minimale est obligatoire
+        <p *ngIf="Product.get('libelle').errors.required">
+          libelle Produit est obligatoire
         </p>
-        <p *ngIf="stock.get('qteMin').errors.pattern">
-          Quantité minimale accepte seulement des nombres
+        <p *ngIf="Product.get('libelle').errors.pattern">
+          code Produit accepte seulement des caractéres
+        </p>
+        <p *ngIf="Product.get('libelle').errors.minlength">
+          la longueur minimale est
+          {{ Product.get("libelle").errors.minlength.requiredLength }}
+          characters
+        </p>
+  
+        <p *ngIf="Product.get('libelle').errors.maxlength">
+          la longueur maximale est
+          {{ Product.get("libelle").errors.maxlength.requiredLength }}
+          characters
         </p>
       </div>
     </div>
-    <div class="col-md-12 my-2">
-      <button class="btn btn-primary">Ajouter Produit</button>
+
+
+
+
+    <div class="col-md-12">
+      <label for="inputprixUnitaire" class="form-label">prixUnitaire du produit</label>
+      <input
+        formControlName="prixUnitaire"
+        type="number"
+        name="prixUnitaire"
+        class="form-control"
+        id="inputprixUnitaire"
+        [ngClass]="{
+          'is-invalid': Product.get('prixUnitaire').touched && Product.get('prixUnitaire').invalid
+        }"
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="Product.get('prixUnitaire').touched && Product.get('prixUnitaire').invalid"
+      >
+        <p *ngIf="Product.get('prixUnitaire').errors.required">
+          prixUnitaire est obligatoire
+        </p>
+        <p *ngIf="Product.get('prixUnitaire').errors.pattern">
+          prixUnitaire accepte seulement des nombres
+        </p>
+      </div>
+    </div>
+
+    <label for="pet-select">Catégorie produit:</label>
+
+    <select name="category" id="category"   formControlName="category">
+        <option value="">Electromenager</option>
+        <option value="Alimentaire">Alimentaire</option>
+        <option value="Quicaillerie">Quicaillerie</option>
+    
+    </select>
+
+    <label for="pet-select">Stock produit:</label>
+  <!--   <select name="stock" id="stock" formControlName="stock">
+      <option *ngFor="let s of ListStock"  ><button value="s.libelleStock" (click)="getId(s.idStock)">{{s.libelleStock}}</button></option>
+    </select> -->
+ <div *ngFor="let s of ListStock">
+  <button value="" name="s.libelleStock" (click)="getId(s.idStock)">{{s.libelleStock}}</button>
+</div>
+
+<div class="container row">
+  <div class="col-md-12">
+      <h1>Upload Image</h1>
+  </div>
+</div>
+
+
+<div class="container row">
+  <div class="col-md-6">
+      <input type="file" (change)="onFileChanged($event)">
+
+  </div>
+  <div class="col-md-6">
+      <input type="button" (click)="onUpload()" value="upload">
+  </div>
+</div>
+
+<hr />
+<div class="container row">
+    <div class="col-md-12">
+        <div *ngIf=message>{{message}}</div>
+    </div>
+</div>
+
+<div class="container row">
+    <div class="col-md-6">
+        <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName"
+            name="name" />
+    </div>
+
+</div>
+
+<div class="container row">
+    <div class="col-md-12">
+        <div *ngIf=retrievedImage>
+            <img [src]="retrievedImage">
+        </div>
+    </div>
+</div>
+
+ <div class="col-md-12 my-2">
+      <button   class="btn btn-primary">Ajouter Produit</button>
     </div>
   </form>
-   -->
+   

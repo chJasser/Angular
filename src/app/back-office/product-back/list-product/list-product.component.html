@@ -1,13 +1,31 @@
+<div class="row">
+  <div class="col-12">
+    <div class="text-right my-2">
+      <a
+        [routerLink]="['/back/addproduit']"
+        type="button"
+        class="btn btn-success mx-auto"
+        >Ajouter produit</a>
+    </div>
+  </div>
 
-
-<div class="card" style="width: 18rem;" *ngFor="let p of ListProduct">
+<div class="col-12">
+  <router-outlet></router-outlet>
+</div>
+<div class="col-lg-1 col-md-6 col-sm-6 product-men women_two" *ngFor="let p of ListProduct">
    <img src="../../../../assets/images/a2.jpg" class="card-img-top" alt="...">
    <div class="card-body">
+    <h5 class="card-title">{{p.idProduit}}</h5>
      <h5 class="card-title">{{p.libelle}}</h5>
      <h5 class="card-title">{{p.code}}</h5>
      <p class="card-text">{{p.prixUnitaire}}</p>
-     <a href="#" class="btn btn-primary"></a>
-     <a href="#" class="btn btn-danger"></a>
-     <a href="#" class="btn btn-primary"></a>
+   <!--   <button class="btn btn-primary"></button> -->
+     <button Style="height: 30px;width: 90px" class="btn btn-danger" (click)="delete(p.idProduit)">Supprimer</button>
+     <button  Style="height: 30px;width: 90px" class="btn btn-primary">Modifier</button>
    </div>
  </div>
+ 
+</div>
+<button>
+
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>

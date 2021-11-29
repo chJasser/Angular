@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Produit } from 'src/Model/Produit';
-import { ProductSService } from 'src/ServicesProduct/product-s.service';
+import { ProduitSService } from 'src/ServicesProduct/product-s.service';
+
 
 
 @Component({
@@ -12,9 +13,9 @@ export class ListProductComponent implements OnInit {
 
   ListProduct:Produit[]
 
-  constructor(private ps:ProductSService) { }
+  constructor(private ps:ProduitSService) { }
   getAllproduits(){
-    this.ps.getAllProductsByJson().subscribe((res) => {
+    this.ps.getAllproduct().subscribe((res) => {
       this.ListProduct = res;
       console.log(this.ListProduct);
     });
@@ -25,6 +26,12 @@ export class ListProductComponent implements OnInit {
 this.getAllproduits();
   }
 
-
+  delete(id: number){
+    console.log("bfore")
+    this.ps.delete(id).subscribe(()=>{
+      this.ListProduct=this.ListProduct.filter(produit=>produit.idProduit!=id)
+    })
+    console.log("after")
+  }
 
 }

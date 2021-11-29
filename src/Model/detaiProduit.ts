@@ -7,7 +7,11 @@ export class detailProduit{
     dateCreation:Date;
     dateDerniereModification:Date;
     prixUnitaire:number;
-    CategorieProduit:CategorieProduit;
+    categorieProduit:CategorieProduit;
   
+
+    constructor(CategorieProduit){
+       this.categorieProduit=CategorieProduit
+    }
   
     }
