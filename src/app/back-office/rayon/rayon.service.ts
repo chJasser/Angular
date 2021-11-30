@@ -35,7 +35,7 @@ export class RayonService {
   }
   updateRayon(rayon: Rayon): Observable<Rayon> {
     return this.httpClient.put<Rayon>(
-      this.url + 'modify-stock',
+      this.url + 'modify-rayon',
       rayon,
       this.httpOptions
     );

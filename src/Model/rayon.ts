@@ -4,4 +4,9 @@ export class Rayon {
   code: string;
   libelle: string;
   produitList?: Produit[];
+
+  constructor(code: string, libelle: string, idRayon?: bigint) {
+    this.code = code;
+    (this.libelle = libelle), (this.idRayon = idRayon);
+  }
 }

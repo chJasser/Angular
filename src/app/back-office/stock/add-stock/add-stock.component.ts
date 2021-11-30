@@ -2,10 +2,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {
   Component,
   EventEmitter,
-  Input,
   OnInit,
   Output,
-  SimpleChanges,
 } from '@angular/core';
 import { Stock } from 'src/Model/Stock';
 import { StockService } from '../stock.service';
