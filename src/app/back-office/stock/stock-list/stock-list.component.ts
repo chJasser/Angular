@@ -17,7 +17,6 @@ export class StockListComponent implements OnInit {
   getAllStocks() {
     this.stockService.getAllStock().subscribe((res) => {
       this.my_Stock = res;
-      console.log(this.my_Stock);
     });
   }
   toogleAddStock() {

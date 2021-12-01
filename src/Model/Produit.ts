@@ -1,7 +1,7 @@
-import { rayon } from "./rayon";
 import { detailProduit } from "./detaiProduit";
 import { Stock } from "./Stock";
 import { ImageModel } from "./ImageModel";
+import { Rayon } from "./Rayon";
 
 
 export class Produit{
@@ -9,18 +9,17 @@ export class Produit{
     code:string;
     libelle:string;
     prixUnitaire:number;
-    rayon?:rayon;
+    rayon?:Rayon;
     stock?:Stock;
     detailProduit?:detailProduit;
     Image?:ImageModel;
 
     constructor(code,libelle,prixunitaire,detailproduit,Image){
-   
-        this.code=code
-        this.libelle=libelle
-        this.prixUnitaire=prixunitaire
-        this.detailProduit=detailproduit
-        this.Image=Image
-    }
-    
-    }
+                this.code=code
+                this.libelle=libelle
+                this.prixUnitaire=prixunitaire
+                this.detailProduit=detailproduit
+                this.Image=Image
+            }
+
+        }

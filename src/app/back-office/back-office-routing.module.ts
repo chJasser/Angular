@@ -1,12 +1,13 @@
+import { BoardAdminComponent } from './board-admin/board-admin.component';
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-
+ 
 const routes: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
+
+  { path: 'admin', component: BoardAdminComponent },
+  {  path: '', component: HomeComponent,
     children: [
       {
         path: 'stock',
@@ -21,7 +22,15 @@ const routes: Routes = [
           import('./product-back/product-back.module').then(
             (m) => m.ProductBackModule
           ),
-      }
+      },
+      {
+
+        path: 'rayon',
+        loadChildren: () =>
+          import('./rayon/rayon.module').then(
+            (m) => m.RayonModule
+          ),
+      },
     ],
   },
 ];
