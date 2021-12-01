@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, Input, Type } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CategorieProduit } from 'src/Model/CategorieProduit';
 import { Produit } from '../Model/Produit';
 
 @Injectable({
@@ -32,11 +33,34 @@ export class ProduitSService {
     return this.HS.get<Produit>(this.url + 'retrieve-produit/' + id);
   }
 
+  getProductBylibelle(lib: string): Observable<Produit[]> {
+    return this.HS.get<Produit[]>(this.url + 'retrieve-all-produits3/' + lib);
+  }
+
+  getMin(): Observable<Produit> {
+    return this.HS.get<Produit>(this.url + 'get-Min');
+  }
+
+  getMax(): Observable<Produit> {
+    return this.HS.get<Produit>(this.url + 'get-Max');
+  }
+
+
+  getProductByCategory(category: CategorieProduit): Observable<Produit[]> {
+    return this.HS.get<Produit[]>(this.url + 'retrieve-all-produits1/' + category);
+  }
+
+  getProductByprixbetween(prix: any): Observable<Produit[]> {
+    return this.HS.get<Produit[]>(this.url + 'retrieve-all-produits2/' + prix);
+  }
+
   addProduct(produit: Produit,idStock:number): Observable<Produit> {
     return this.HS.post<Produit>(this.url + 'add-produit/'+idStock+'/1', produit, this.httpOptions);
   }
         
-
+  updateProduct(produit: Produit,id:number): Observable<Produit> {
+    return this.HS.put<Produit>(this.url + 'modify-produit/'+id,produit,this.httpOptions);
+  }
 
 
 

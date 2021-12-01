@@ -11,10 +11,11 @@ export class Produit{
     prixUnitaire:number;
     rayon?:rayon;
     stock?:Stock;
-    detailProduit:detailProduit;
-    Image:ImageModel;
+    detailProduit?:detailProduit;
+    Image?:ImageModel;
 
     constructor(code,libelle,prixunitaire,detailproduit,Image){
+   
         this.code=code
         this.libelle=libelle
         this.prixUnitaire=prixunitaire

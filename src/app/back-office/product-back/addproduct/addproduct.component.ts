@@ -1,5 +1,5 @@
  import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { detailProduit } from 'src/Model/detaiProduit';
 import { ImageModel } from 'src/Model/ImageModel';
@@ -18,6 +18,10 @@ export class AddproductComponent implements OnInit {
   constructor(private ps:ProduitSService,private ss:StockService,private HS:HttpClient) { }
   Product: FormGroup;
   myProduit: Produit;
+
+
+  @Output() addedProduct = new EventEmitter<Produit>();
+  @Output() addProductStatus = new EventEmitter<boolean>();
 
   Image:any;
   ImageAdd:ImageModel;
@@ -122,8 +126,8 @@ idStockProduit:number;
 
   addProduct() {
     console.log(this.Image)
-    this.getImage(this.Image.name)
-    this.ImageAdd=new ImageModel("2.png","image/png",this.base64Data)
+    //this.getImage(this.Image.name)
+    //this.ImageAdd=new ImageModel("2.png","image/png",this.base64Data)
   //this.ImageAdd=(ImageModel)this.Image
 this.detailProduit=new detailProduit(this.Product.get('category').value)
     this.myProduit = new Produit(
@@ -131,14 +135,41 @@ this.detailProduit=new detailProduit(this.Product.get('category').value)
       this.Product.get('libelle').value,
       this.Product.get('prixUnitaire').value,
       this.detailProduit,
-      this.ImageAdd
+      null
     );
 
     console.log(this.myProduit);
+    
     this.ps.addProduct(this.myProduit,this.idStockProduit).subscribe((res) => {
       console.log('Product created!', res);
     });
     
   } 
+
+  sa(a:number){
+    console.log("select déclenchéé")
+  console.log(a)
+  }
+
+  productAdded() {
+    this.Product.setValue({
+      code: '',
+      libelle: '',
+      prixUnitaire: '',
+    });
+    this.addedProduct.emit(this.myProduit);
+    this.addProductStatus.emit(false);
+  }
+  discardAdd() {
+    this.addProductStatus.emit(false);
+  }
+
+
+
+
+
+
+
+
   
 }

@@ -25,14 +25,36 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->       
              <li  class="nav-item ml-1">
-              <a [routerLink]="['/back']" class="nav-link">
-                <i class="fas fa-product-hunt"></i>
+              <a  [routerLink]="['/back']" class="nav-link">
+                <i class="fas fa-apple-alt"></i>
                 <p>
                   Produit
                 </p>
+                <i class="fas fa-angle-left right"></i>
               </a>
-            </li>
-       
+            
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/mailbox/mailbox.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Inbox</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/mailbox/compose.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Compose</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/mailbox/read-mail.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Read</p>
+                </a>
+              </li>
+            </ul>
+       </li>
              <li  class="nav-item ml-1">
         <li  class="nav-item ml-2">
           <a [routerLink]="['/back/stock']" class="nav-link">

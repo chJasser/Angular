@@ -1,8 +1,5 @@
-<link rel="stylesheet" href="addproduct.component.css" />
-
-
-<h3  style="margin-top: -20px" class="ml-2" >Ajouter produit</h3>
-<form [formGroup]="Product" (submit)="addProduct()">
+<h3 style="margin-top: -20px" class="ml-2">Modifier produit</h3>
+<form [formGroup]="Product" (submit)="updateProduct()">
     <div class="col-md-12">
       <label for="inputId" class="form-label">Id</label>
       <input
@@ -130,112 +127,22 @@
       </div>
     </div>
 
-    <label for="pet-select mr-4" style="margin-left: 1.5rem;">Catégorie produit:</label>
+    <label for="pet-select">Catégorie produit:</label>
 
     <select name="category" id="category"   formControlName="category">
-        <option value="">Electromenager</option>
+        <option value="Electromenager">Electromenager</option>
         <option value="Alimentaire">Alimentaire</option>
-        <option value="Quicaillerie">Quicaillerie</option>
+        <option value="Quincaillerie">Quincaillerie</option>
     
     </select>
 
- <!--   <select name="stock" id="stock" formControlName="stock">
-       <option *ngFor="let s of ListStock;let i=index" value="s.libelleStock"  (click)="sa(i)" (click)="getId(i)">{{s.libelleStock}}</option>
-    </select>  -->
-
-
-
-
-<style>
-.final__dropdown{
-  position: relative;
-  z-index: 10;
-  display: inline-block;
-}
-  .final__dropdown__hover{
-    display: inline-block;
-    padding: 10px;
-    background-color:chocolate;
-    color: #ffffff;
-    border:0 solid #323b40;
-    cursor: pointer;
-  }
-  .final__dropdown__hover:hover{background-color:burlywood;}
-  .final__dropdown__menu{
-    position: absolute;
-    display: none;
-    top: 100%;
-    left: 0;
-    min-width: 150px;
-    background-color: #ffffff;
-    color: #323b40;
-    box-shadow: 0 3px 2px rgba(0,0,0,0.3);
-  }
-  .final__dropdown:hover .final__dropdown__menu{display: block;}
-    .final__dropdown__menu a{
-      display: block;
-      padding: 10px;
-      text-decoration: none;
-      border-width: 0;
-      border-top: 1px solid #e0e0e0;
-    }
-    .final__dropdown__menu a:hover{
-      background-color:#f0f0f0;
-      color: #323b40;
-    }
-
-.final-result{
-  justify-content:flex-end;
-}
-
-
-</style>
-
-<br>
-<br>
-<div class="final-result" style="display:inline-flex;margin-bottom: 1.5rem;">
-
-    <section >
-
-      <label for="pet-select" style="margin-left: 1.5rem;">Stock du produit</label>>
-      <div class="final__dropdown">
-        <button class="final__dropdown__hover">Stock</button>
-        <div class="final__dropdown__menu">
-          <button type="button" style="width:150px;color:beige;background-color: chocolate;display: flex;"    *ngFor="let s of ListStock;let i=index" value="s.libelleStock"  (click)="sa(i)" (click)="getId(s.idStock)">{{s.libelleStock}}</button>
-        </div>
-      </div>
-
-    </section>
-
-
-
-
-    <section>
-
-      <label for="pet-select" style="margin-left: 1.5rem;">Rayon du produit</label>>
-      <div class="final__dropdown">
-        <button class="final__dropdown__hover">Rayon</button>
-        <div class="final__dropdown__menu">
-          <button type="button" style="width:150px;color:beige;background-color: chocolate;display: flex;"    *ngFor="let s of ListStock;let i=index" value="s.libelleStock"  (click)="sa(i)" (click)="getId(s.idStock)">{{s.libelleStock}}</button>>
-         
-        </div>
-      </div>
-
-    </section>
-</div>
-
-
-
-
-
-
-
- <!-- <div *ngFor="let s of ListStock">
+    <label for="pet-select">Stock produit:</label>
+  <!--   <select name="stock" id="stock" formControlName="stock">
+      <option *ngFor="let s of ListStock"  ><button value="s.libelleStock" (click)="getId(s.idStock)">{{s.libelleStock}}</button></option>
+    </select> -->
+ <div *ngFor="let s of ListStock">
   <button value="" name="s.libelleStock" (click)="getId(s.idStock)">{{s.libelleStock}}</button>
 </div>
- -->
-
-
 
 <!-- <div class="container row">
   <div class="col-md-12">
@@ -278,26 +185,53 @@
 </div>
  -->
  <div class="col-md-12 my-2">
-  <button type="submit" [disabled]="Product.invalid"   data-bs-toggle="modal" data-bs-target="#staticBackdrop"  class="btn btn-primary">Ajouter produit</button>
-  <button (click)="discardAdd()" class="btn btn-dark ml-3">Annuler</button>
+    <button
+    type="submit"
+    [disabled]="Product.invalid"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop"
+  >
+    Modifier produit
+  </button>
+      <button (click)="discardUpdate()" class="btn btn-dark ml-3">Annuler</button>
     </div>
   </form>
 
 
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Gestion Produit</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-         Produit ajouté avec success
-        </div>
-        <div class="modal-footer">
-          <button  type="button"  (click)="productAdded()" (click)="discardAdd()" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
-        </div>
+  <div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Gestion produit</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">Produit modifié avec succés</div>
+      <div class="modal-footer">
+        <button
+          (click)="ProductUpdated()"
+          (click)="discardUpdate()"
+          type="button"
+          class="btn btn-success"
+          data-bs-dismiss="modal"
+        >
+          Ok
+        </button>
       </div>
     </div>
   </div>
+</div>
    

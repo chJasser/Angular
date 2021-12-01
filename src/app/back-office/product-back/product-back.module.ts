@@ -7,12 +7,14 @@ import { ListProductComponent } from './list-product/list-product.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { UpdateProductComponent } from './update-product/update-product.component';
 
 @NgModule({
   declarations: [
     MainProductComponent,
     ListProductComponent,
-    AddproductComponent
+    AddproductComponent,
+    UpdateProductComponent
     
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
