@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { LabelType, Options } from 'ng5-slider';
+
 import { CategorieProduit } from 'src/Model/CategorieProduit';
 import { Produit } from 'src/Model/Produit';
 import { ProduitSService } from 'src/ServicesProduct/product-s.service';
@@ -15,7 +15,7 @@ export class SidebarComponent implements OnInit {
 
 
   @Output() libelleSearched = new EventEmitter<string>();
-  
+
   @Output() prixselected = new EventEmitter<any>();
   @Output() salut = new EventEmitter<CategorieProduit>();
   prix:any;
