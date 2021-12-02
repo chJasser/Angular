@@ -7,6 +7,17 @@
         class="fas fa-plus-circle mx-auto"
       ></i>
     </div>
+
+    <div class="col-3 mb-3">
+      <input
+        [(ngModel)]="searchVal"
+        (keyup)="serach()"
+        class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+    </div>
   </div>
   <div class="col-12">
     <app-add-stock
@@ -14,18 +25,26 @@
       (addStockStatus)="toogleStatus()"
       (addedStock)="addStockToList($event)"
     ></app-add-stock>
-    <app-update-stock (updated)="getStockList($event)" (updateStockStatus)="CloseUpdate()" [selectedStock]="stockToUpdate" *ngIf="updateStockStatus"></app-update-stock>
+    <app-update-stock
+      (updated)="getStockList($event)"
+      (updateStockStatus)="CloseUpdate()"
+      [selectedStock]="stockToUpdate"
+      *ngIf="updateStockStatus"
+    ></app-update-stock>
   </div>
   <div
     *ngFor="let item of my_Stock; let i = index"
     class="col-12 col-sm-6 col-md-4"
   >
-    <div
-      [style.backgroundColor]="item.qte >= item.qteMin ? '' : '#dc3545'"
-      class="card"
-    >
+    <div class="card">
       <div
-        [class]="item.qte >= item.qteMin ? 'card-body' : 'card-body stockRp'"
+        class="card-header"
+        [style.backgroundColor]="item.qte >= item.qteMin ? '' : '#dc3545'"
+      >
+        Featured
+      </div>
+      <div
+        [class]="item.qte >= item.qteMin ? 'card-body' : 'card-body'"
       >
         <h5 style="font-weight: bold">{{ item.libelleStock | uppercase }}</h5>
         <div class="text-right" style="margin-top: -1.7rem">
@@ -49,9 +68,16 @@
           stock.
         </p>
         <p *ngIf="item.qteMin < item.qte" class="card-text">
-          votre avez <span class="fontWeight">{{ item.qte }}</span> produit en
+          vous avez <span class="fontWeight">{{ item.qte }}</span> produit en
           stock et votre quantité minimale est
           <span class="fontWeight">{{ item.qteMin }}</span>
+        </p>
+        <p class="card-text">
+          <span class="fontWeight"> Date creation : </span> {{ item.createdAt }}
+        </p>
+        <p *ngIf="item.updatedAt != null" class="card-text">
+          <span class="fontWeight"> Date modification : </span>
+          {{ item.updatedAt }}
         </p>
         <button
           [disabled]="item.produitList.length <= 0"

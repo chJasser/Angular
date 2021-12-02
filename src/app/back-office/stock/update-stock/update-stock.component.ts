@@ -62,7 +62,6 @@ export class UpdateStockComponent implements OnInit {
   }
 
   updateStock() {
-    this.myStock = this.stock.getRawValue();
     this.myStock = new Stock(
       this.stock.get('qteMin').value,
       this.stock.get('libelleStock').value,

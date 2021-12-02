@@ -24,6 +24,10 @@ export class StockService {
     return this.HS.get<Stock[]>(this.url + 'retrieve-all-stocks');
   }
 
+  getAllStockEnRupture(): Observable<Stock[]> {
+    return this.HS.get<Stock[]>(this.url + 'retrive-stockRp');
+  }
+
   getStockById(id: number): Observable<Stock> {
     return this.HS.get<Stock>(this.url + 'retrieve-stock/' + id);
   }
@@ -37,5 +41,8 @@ export class StockService {
       stock,
       this.httpOptions
     );
+  }
+  search(s: string): Observable<Stock[]> {
+    return this.HS.post<Stock[]>(this.url + 'search-stock', s, this.httpOptions);
   }
 }

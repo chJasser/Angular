@@ -18,6 +18,7 @@ export class StockDetailComponent implements OnInit {
           .getStockById(Number(next.get('id')))
           .subscribe((res) => {
             this.stock = res;
+            console.log(this.stock)
           }),
       (error) => console.log(error)
     );
