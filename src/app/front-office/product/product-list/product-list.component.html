@@ -3,7 +3,7 @@
      <h3 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">Toys Shop</h3>
      <div class="row">
        <div class="side-bar col-lg-3">
-        <app-sidebar></app-sidebar>
+        <app-sidebar (salut)="getproduitsBycat($event)" (prixselected)= "getproduitsByprix($event)" (libelleSearched)="getProductBylibelle($event)"></app-sidebar>
        </div>
         <div class="left-ads-display col-lg-9">
            <div class="row">
@@ -16,7 +16,7 @@
                            <img src="../../assets/images/p1.jpg" class="img-thumbnail img-fluid" alt="">
                            <div class="men-cart-pro">
                               <div class="inner-men-cart-pro">
-                                 <a href="single.html" class="link-product-add-cart">Quick View</a>
+                                 <a href="single.html" class="link-product-add-cart">{{p.code}}</a>
                               </div>
                            </div>
                            <span class="product-new-top">New</span>
@@ -26,10 +26,10 @@
                               <div class="grid_meta">
                                  <div class="product_price">
                                     <h4>
-                                       <a href="single.html">toys(barbie)</a>
+                                       <a href="single.html">{{p.libelle}}</a>
                                     </h4>
                                     <div class="grid-price mt-2">
-                                       <span class="money ">$575.00</span>
+                                       <span class="money ">{{p.prixUnitaire}}</span>
                                     </div>
                                  </div>
                                  <ul class="stars">

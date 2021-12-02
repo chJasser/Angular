@@ -55,7 +55,6 @@ export class UpdateStockComponent implements OnInit {
         new FormControl(this.selectedStock.libelleStock)
       );
     }
-    console.log(changes);
   }
 
   discardUpdate() {

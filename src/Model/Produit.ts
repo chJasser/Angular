@@ -1,25 +1,25 @@
-
-import { rayon } from "./rayon";
 import { detailProduit } from "./detaiProduit";
 import { Stock } from "./Stock";
+import { ImageModel } from "./ImageModel";
+import { Rayon } from "./Rayon";
 
 
 export class Produit{
-    idProduit:number;
+    idProduit?:number;
     code:string;
     libelle:string;
     prixUnitaire:number;
-    rayon?:rayon;
+    rayon?:Rayon;
     stock?:Stock;
-    detailproduit?:detailProduit;
+    detailProduit?:detailProduit;
+    Image?:ImageModel;
 
+    constructor(code,libelle,prixunitaire,detailproduit,Image){
+                this.code=code
+                this.libelle=libelle
+                this.prixUnitaire=prixunitaire
+                this.detailProduit=detailproduit
+                this.Image=Image
+            }
 
-    /*constructor(id,code,libelle,prixunitaire,tauxTva){
-        this.id=id
-        this.code=code
-        this.libelle=libelle
-        this.prixunitaire=prixunitaire
-        this.tauxTva=tauxTva
-    }
-    */
-    }
+        }

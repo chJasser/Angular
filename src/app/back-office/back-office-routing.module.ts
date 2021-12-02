@@ -16,6 +16,21 @@ const routes: Routes = [
             (m) => m.StockModule
           ),
       },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./product-back/product-back.module').then(
+            (m) => m.ProductBackModule
+          ),
+      },
+      {
+
+        path: 'rayon',
+        loadChildren: () =>
+          import('./rayon/rayon.module').then(
+            (m) => m.RayonModule
+          ),
+      },
     ],
   },
 ];

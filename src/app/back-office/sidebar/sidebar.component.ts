@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Produit } from 'src/Model/Produit';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  @Output() addedProduct = new EventEmitter<Produit>();
   constructor() { }
 
   ngOnInit(): void {

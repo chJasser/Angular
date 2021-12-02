@@ -1,50 +1,80 @@
 
 
 
-      <div class="search-hotel">
-        <h3 class="agileits-sear-head">Search Here..</h3>
-        <form action="#" method="post">
-           <input type="search" placeholder="Product name..." name="search" required="">
-           <input type="submit" value=" ">
-        </form>
-     </div>
+
+      <div class="search-hotel" style="margin-left: 3rem;">
+         <h3 class="agileits-sear-head">Chercher par libelle..</h3>
+         
+            <input type="search" [(ngModel)]="libelle" #it="ngModel" placeholder="Product libelle..." name="search" required="">         
+            <i class="fas fa-search"  style="margin-left: 1rem;" (click)="getProductBylibelle(libelle)"></i>
+      </div>
  <!-- price range -->
- <div class="range">
-   <h3 class="agileits-sear-head">Price range</h3>
+ <div class="range" style="margin-top: 3rem;" >
+   <h3 class="agileits-sear-head" style="margin-left: 2rem;font-weight: bold;">Prix unitaire:</h3>
+   <div style="margin: 1.5rem;">
+      <div style="margin-right: 1.5rem;">{{prix}}</div> 
+      </div>
    <ul class="dropdown-menu6">
      <li>
+<div>
+        
+   <div>Min: {{minValue}}<input type="range" [(ngModel)]="prix" [value]="prix" #it1="ngModel" name="price" [min]="minValue" [max]="maxValue">
+   </div>
+   <div style="text-align:right;">
+      Max: {{maxValue}}
+      </div>
+      </div>
+         <i class="fas fa-search"  style="margin-left: 20rem;" (click)="getproduitsByprix(prix)"></i>
 
-       <div id="slider-range"></div>
-       <input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
      </li>
    </ul>
  </div>
  <!-- //price range -->
      <!--preference -->
-     <div class="left-side">
-        <h3 class="agileits-sear-head">Occasion</h3>
+<style>
+
+
+</style>
+
+
+     <div class="left-side" style="margin-top: 3rem;margin-left: 3rem;">
+      <h3 class="agileits-sear-head" style="font-weight: bold;">Catégorie:</h3>
+     <select name="category" id="category" style="background-color:sandybrown; color:whitesmoke;width: 300px;"[(ngModel)]="categorie">
+      <option value="Electromenager" selected>Electromenager</option>
+      <option value="Alimentaire">Alimentaire</option>
+      <option value="Quincaillerie">Quincaillerie</option>
+  
+    </select>
+
+    <i class="fas fa-search"  style="text-align:end;" (click)="getproduitsBycat(categorie)"></i>
+
+    </div>
+
+
+
+
+
+    <!--  <div class="left-side">
+        <h3 class="agileits-sear-head">Catégorie</h3>
         <ul>
            <li>
-              <input type="checkbox" class="checked">
-              <span class="span">Gift</span>
+              <input type="checkbox" class="checked" value="Electromenager"  (change)="toggleEditable($event)">
+              <span class="span">Electromenager</span>
            </li>
            <li>
-              <input type="checkbox" class="checked">
-              <span class="span">Kid Play</span>
+              <input type="checkbox" class="checked"  (change)="toggleEditable($event)">
+              <span class="span">Alimentaire</span>
            </li>
            <li>
-              <input type="checkbox" class="checked">
-              <span class="span">Dolls</span>
+              <input type="checkbox" class="checked"  (change)="toggleEditable($event)">
+              <span class="span">Quincaillerie</span>
            </li>
-           <li>
-              <input type="checkbox" class="checked">
-              <span class="span">Remot</span>
-           </li>
+          
         </ul>
-     </div>
+     </div> -->
      <!-- // preference -->
      <!-- discounts -->
-     <div class="left-side">
+  <!--   <div class="left-side">
         <h3 class="agileits-sear-head">Discount</h3>
         <ul>
            <li>
@@ -72,10 +102,9 @@
               <span class="span">60% or More</span>
            </li>
         </ul>
-     </div>
-     <!-- //discounts -->
-     <!-- reviews -->
-     <div class="customer-rev left-side">
+     </div> -->
+
+     <div class="customer-rev left-side" style="margin-top: 3rem;margin-left: 3rem;">
         <h3 class="agileits-sear-head">Customer Review</h3>
         <ul>
            <li>
@@ -130,3 +159,5 @@
            </li>
         </ul>
      </div>
+
+     <button type="button" >Filtrer</button>
