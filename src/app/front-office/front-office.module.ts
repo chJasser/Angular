@@ -9,19 +9,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FrontOfficeRoutingModule } from './front-office-routing.module';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ProfileComponent } from './profile/profile.component';
-
+ 
 
 @NgModule({
   declarations: [HomeComponent,
     HeaderComponent, 
     EndNavComponent,
-    FooterComponent, 
-    LoginComponent, 
-    RegisterComponent, 
-    ProfileComponent],
+    FooterComponent, ],
   imports: [
     CommonModule, 
     FrontOfficeRoutingModule,

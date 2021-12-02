@@ -1,7 +1,7 @@
-import { RegisterComponent } from './front-office/register/register.component';
-import { LoginComponent } from './front-office/login/login.component';
+import { RegisterComponent } from './front-office/user/register/register.component';
+import { LoginComponent } from './front-office/user/login/login.component';
 import { BoardAdminComponent } from './back-office/board-admin/board-admin.component';
-import { ProfileComponent } from './front-office/profile/profile.component';
+import { ProfileComponent } from './front-office/user/profile/profile.component';
 import { HomeComponent } from './front-office/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';

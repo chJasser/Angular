@@ -1,21 +1,19 @@
-import { ProfileComponent } from './profile/profile.component';
-import { BoardAdminComponent } from './../back-office/board-admin/board-admin.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
+
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
  
 const routes: Routes = [       
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'user', component: ProfileComponent },
   {  path: '', component: HomeComponent,
     children: [
       {
         path: 'product',
         loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
         },
+        {
+          path: 'user',
+          loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+          },
     ],
   },
   /* { path: 'product', component: ProductComponent },

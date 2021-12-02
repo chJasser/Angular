@@ -1,0 +1,26 @@
+<div class="container" *ngIf="currentUser.accessToken; else loggedOut">
+
+  <div class="container p-4 p-md-5 mb-4 mt-5 text-white rounded bg-dark">
+    <div class="col-md-6 px-2">
+      <h1 class="display-4 fst-italic">Profile</h1>
+      <p class="lead my-3"> <strong>{{ currentUser.username }}</strong> </p>
+      <p class="lead mb-0"><a href="#" class="text-dark fw-bold">Continue reading...</a></p>
+    </div>
+  </div>
+
+    <p>
+      <strong>Email:</strong>
+      {{ currentUser.email }}
+    </p>
+    <p>
+      <strong>Nom :</strong>
+      {{ currentUser.profile.nom }}
+    </p>
+   
+  </div>
+  
+  <ng-template #loggedOut>
+    <div class="alert alert-danger mt-5" role="alert">
+     Please Login 
+    </div>
+  </ng-template> 
