@@ -6,10 +6,14 @@ export class Stock {
   qteMin: number;
   libelleStock: string;
   produitList?: Produit[];
+  createdAt:Date;
+  updatedAt:Date;
 
-  constructor(qteMin, libelleStock, idStock?) {
+  constructor(qteMin, libelleStock, idStock?,createdAt?,updatedAt?) {
     this.qteMin = qteMin;
     this.libelleStock = libelleStock;
     this.idStock = idStock;
+    this.createdAt=createdAt;
+    this.updatedAt=updatedAt;
   }
 }

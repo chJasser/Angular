@@ -67,9 +67,10 @@ export class UpdateStockComponent implements OnInit {
       this.stock.get('libelleStock').value,
       this.stock.get('idStock').value
     );
+    this.myStock.createdAt = this.selectedStock.createdAt;
     console.log(this.myStock);
-    this.stockService.updateStock(this.myStock).subscribe((res) => {
-      console.log('stock updated!' + res);
+     this.stockService.updateStock(this.myStock).subscribe((res) => {
+
     });
   }
 

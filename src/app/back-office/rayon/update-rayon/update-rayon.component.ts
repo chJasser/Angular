@@ -61,12 +61,13 @@ export class UpdateRayonComponent implements OnInit {
   }
 
   updateRayon() {
-    this.myRayon = this.rayon.getRawValue();
+
     this.myRayon = new Rayon(
       this.rayon.get('code').value,
       this.rayon.get('libelle').value,
       this.rayon.get('idRayon').value
     );
+    this.myRayon.createdAt=this.selectedRayon.createdAt;  
     console.log(this.myRayon);
     this.rayonService.updateRayon(this.myRayon).subscribe((res) => {
       console.log('stock updated!' + res);
