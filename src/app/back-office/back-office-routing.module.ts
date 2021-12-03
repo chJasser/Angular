@@ -5,10 +5,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
  
 const routes: Routes = [
-
-  { path: 'admin', component: BoardAdminComponent },
+ 
+  //{ path: 'admin', component: BoardAdminComponent },
   {  path: '', component: HomeComponent,
     children: [
+      {
+        path: 'user',
+        loadChildren: () =>
+          import('./user/user.module').then(
+            (m) => m.UserModule
+          ),
+      },
       {
         path: 'stock',
         loadChildren: () =>
@@ -17,7 +24,7 @@ const routes: Routes = [
           ),
       },
       {
-        path: '',
+        path: 'product',
         loadChildren: () =>
           import('./product-back/product-back.module').then(
             (m) => m.ProductBackModule

@@ -1,0 +1,33 @@
+<div class="col-md-12">
+    <div class="card card-container">
+     
+        <form
+          
+          name="form"
+          (ngSubmit)="assignAdmin()"
+          #f="ngForm"
+          novalidate
+        >
+          <div class="form-group">
+            <label for="username">ID USER :</label>
+            <input
+              type="number"
+              class="form-control"
+              name="id"
+              [(ngModel)]="id"
+              required
+              #iduser="ngModel"
+            />
+            
+          </div>
+          
+          <div class="form-group">
+            <button class="btn btn-primary btn-block">
+              Assign
+            </button>
+          </div>
+          
+        </form>
+    
+      </div>
+    </div>
