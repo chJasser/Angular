@@ -15,7 +15,8 @@ import { FrontOfficeRoutingModule } from './front-office-routing.module';
   declarations: [HomeComponent,
     HeaderComponent, 
     EndNavComponent,
-    FooterComponent, ],
+    FooterComponent
+     ],
   imports: [
     CommonModule, 
     FrontOfficeRoutingModule,

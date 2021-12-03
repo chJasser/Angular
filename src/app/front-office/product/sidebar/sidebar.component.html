@@ -5,7 +5,7 @@
       <div class="search-hotel" style="margin-left: 3rem;">
          <h3 class="agileits-sear-head">Chercher par libelle..</h3>
          
-            <input type="search" [(ngModel)]="libelle" #it="ngModel" placeholder="Product libelle..." name="search" required="">         
+            <input type="search" [(ngModel)]="libelle" #it="ngModel"  (keyup)="getProductBylibelle(libelle)" placeholder="Product libelle..." name="search" required="">         
             <i class="fas fa-search"  style="margin-left: 1rem;" (click)="getProductBylibelle(libelle)"></i>
       </div>
  <!-- price range -->
@@ -24,7 +24,7 @@
       Max: {{maxValue}}
       </div>
       </div>
-         <i class="fas fa-search"  style="margin-left: 20rem;" (click)="getproduitsByprix(prix)"></i>
+         <i class="fas fa-search"  style="margin-left: 13rem;" (click)="getproduitsByprix(prix)"></i>
 
      </li>
    </ul>
@@ -39,14 +39,14 @@
 
      <div class="left-side" style="margin-top: 3rem;margin-left: 3rem;">
       <h3 class="agileits-sear-head" style="font-weight: bold;">Catégorie:</h3>
-     <select name="category" id="category" style="background-color:sandybrown; color:whitesmoke;width: 300px;"[(ngModel)]="categorie">
+     <select name="category" id="category" style="background-color:sandybrown; color:whitesmoke;width: 200px;"[(ngModel)]="categorie" (keyup)="getproduitsBycat(categorie)">
       <option value="Electromenager" selected>Electromenager</option>
       <option value="Alimentaire">Alimentaire</option>
       <option value="Quincaillerie">Quincaillerie</option>
   
     </select>
 
-    <i class="fas fa-search"  style="text-align:end;" (click)="getproduitsBycat(categorie)"></i>
+    <i class="fas fa-search" (click)="getproduitsBycat(categorie)"></i>
 
     </div>
 
@@ -160,4 +160,4 @@
         </ul>
      </div>
 
-     <button type="button" >Filtrer</button>
+     <button type="button" style="background-color: darkgoldenrod;text-align: right;margin-left: 10rem;">Filtrer </button>

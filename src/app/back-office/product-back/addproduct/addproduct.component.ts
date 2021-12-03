@@ -4,8 +4,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { detailProduit } from 'src/Model/detaiProduit';
 import { ImageModel } from 'src/Model/ImageModel';
 import { Produit } from 'src/Model/Produit';
+import { Rayon } from 'src/Model/Rayon';
 import { Stock } from 'src/Model/Stock';
 import { ProduitSService } from 'src/ServicesProduct/product-s.service';
+import { RayonService } from '../../rayon/rayon.service';
 import { StockService } from '../../stock/stock.service';
 
 @Component({
@@ -15,7 +17,7 @@ import { StockService } from '../../stock/stock.service';
 })
 export class AddproductComponent implements OnInit {
 
-  constructor(private ps:ProduitSService,private ss:StockService,private HS:HttpClient) { }
+  constructor(private ps:ProduitSService,private ss:StockService,private HS:HttpClient,private sr:RayonService) { }
   Product: FormGroup;
   myProduit: Produit;
 
@@ -32,8 +34,9 @@ export class AddproductComponent implements OnInit {
   message: string;
   imageName: any;
 idStockProduit:number;
-
+idRayonProduit:number;
   ListStock:Stock[];
+  ListRayon:Rayon[];
   detailProduit:detailProduit;
 
 
@@ -68,6 +71,16 @@ idStockProduit:number;
   }
 
 
+  getIdRayon(id){
+    
+    console.log(id);
+    this.sr.getRayonById(id).subscribe((res) =>{
+       this.idRayonProduit=Number(res.idRayon);
+       console.log(this.idRayonProduit);
+    });
+  }
+
+
 
   getAllStocks(){
     this.ss.getAllStock().subscribe((res) => {
@@ -75,11 +88,18 @@ idStockProduit:number;
       console.log(this.ListStock);
     });
   }
+
+  getAllRayons(){
+    this.sr.getAllRayons().subscribe((res) => {
+      this.ListRayon = res;
+      console.log(this.ListRayon);
+    });
+  }
  
   ngOnInit(): void {
     console.log(this.idStockProduit);
   this.getAllStocks();
-
+this.getAllRayons();
 
 
      this.Product = new FormGroup({
@@ -140,11 +160,16 @@ this.detailProduit=new detailProduit(this.Product.get('category').value)
 
     console.log(this.myProduit);
     
-    this.ps.addProduct(this.myProduit,this.idStockProduit).subscribe((res) => {
+    this.ps.addProduct(this.myProduit,this.idStockProduit,this.idRayonProduit).subscribe((res) => {
       console.log('Product created!', res);
     });
     
   } 
+
+  sa1(a:number){
+    console.log("Rayon déclenchéé")
+  console.log(a)
+  }
 
   sa(a:number){
     console.log("select déclenchéé")

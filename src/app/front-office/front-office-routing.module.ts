@@ -7,9 +7,11 @@ const routes: Routes = [
   {  path: '', component: HomeComponent,
     children: [
       {
+        
         path: 'product',
         loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
         },
+
         {
           path: 'user',
           loadChildren: () => import('./user/user.module').then(m => m.UserModule)

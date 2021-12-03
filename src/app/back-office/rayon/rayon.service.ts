@@ -24,6 +24,7 @@ export class RayonService {
 
   getAllRayons(): Observable<Rayon[]> {
     return this.httpClient.get<Rayon[]>(this.url + 'retrieve-all-rayons');
+  
   }
 
   getRayonById(id: number): Observable<Rayon> {

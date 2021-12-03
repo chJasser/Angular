@@ -1,6 +1,6 @@
 <section class="contact py-lg-4 py-md-3 py-sm-3 py-3">
   <div class="container-fluid py-lg-5 py-md-4 py-sm-4 py-3">
-     <h3 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">Toys Shop</h3>
+     <h3 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">Products Shop</h3>
      <div class="row">
        <div class="side-bar col-lg-3">
         <app-sidebar (salut)="getproduitsBycat($event)" (prixselected)= "getproduitsByprix($event)" (libelleSearched)="getProductBylibelle($event)"></app-sidebar>
@@ -16,7 +16,7 @@
                            <img src="../../assets/images/p1.jpg" class="img-thumbnail img-fluid" alt="">
                            <div class="men-cart-pro">
                               <div class="inner-men-cart-pro">
-                                 <a href="single.html" class="link-product-add-cart">{{p.code}}</a>
+                                 <a (click)="getid(p.idProduit)" href="javascript:void()" data-toggle="modal" data-target="#personal-details" class="link-product-add-cart">{{p.code}}</a>
                               </div>
                            </div>
                            <span class="product-new-top">New</span>
@@ -86,3 +86,57 @@
   </div>
 </section>
 
+<div class="modal fade" id="personal-details" role="dialog">
+   <div class="modal-dialog">        
+     <!-- Modal content-->
+     <div class="modal-content">           
+       <div class="modal-body"> 
+         <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css" integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
+
+         <div class="container">
+             <div class="row">
+               
+                     <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
+                         <div class="tab-content" id="myTabContent">
+                             <div class="tab-pane fade  active show" id="favourites" role="tabpanel" aria-labelledby="favourites-tab">
+                                 <h4 class="font-weight-bold mt-0 mb-4" style="font-weight: bold;">Details produits</h4>
+                                 <div class="row">
+                                    <div class="col-md-4 col-sm-6 mb-4 pb-2">
+                                       <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                           <div class="list-card-image">
+                                               <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
+                                               <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
+                                               <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
+                                               <a href="#">
+                                                   <img src="img/list/4.png" class="img-fluid item-img">
+                                               </a>
+                                           </div>
+                                           <div class="p-3 position-relative">
+                                               <div class="list-card-body">
+                                                   <h6 class="mb-1"><a href="#" class="text-black">Details du produit: 
+                                                    </a>
+                                                 </h6>
+                                                   <p class="text-gray mb-3"></p>
+                                                   <p class="text-gray mb-3 time"><span class="float-right text-black-50">  prixUnitaire : {{prixUnitaire}}</span></p>
+                                               </div>
+                                
+                                           </div>
+                                       </div>
+                                   </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+            
+             </div>
+         </div>
+    <!--  Prix: {{p.prixUnitaire}} -->
+       </div>
+     </div>
+   </div>
+</div>
+<!--  
+<li><a href="javascript:void()" data-toggle="modal" data-target="#personal-details">user 1</a></li>
+<li><a href="javascript:void()" data-toggle="modal" data-target="#personal-details">user 2</a></li>...
+ -->
+ <!-- POPUP PERSONAL DETAILS START HERE -->
