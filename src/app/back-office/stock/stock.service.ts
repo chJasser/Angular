@@ -25,7 +25,7 @@ export class StockService {
   }
 
   getAllStockEnRupture(): Observable<Stock[]> {
-    return this.HS.get<Stock[]>(this.url + 'retrive-stockRp');
+    return this.HS.get<Stock[]>(this.url + 'stock-rupture');
   }
 
   getStockById(id: number): Observable<Stock> {
@@ -43,6 +43,9 @@ export class StockService {
     );
   }
   search(s: string): Observable<Stock[]> {
-    return this.HS.post<Stock[]>(this.url + 'search-stock', s, this.httpOptions);
+    return this.HS.get<Stock[]>(
+      this.url + 'search-stock/' + s ,
+      this.httpOptions
+    );
   }
 }

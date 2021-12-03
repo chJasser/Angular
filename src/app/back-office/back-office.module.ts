@@ -10,10 +10,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { BodyComponent } from './body/body.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
- 
 
 
 @NgModule({
@@ -31,6 +31,9 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    MatMenuModule,
+
+
   ]
 })
 export class BackOfficeModule { }

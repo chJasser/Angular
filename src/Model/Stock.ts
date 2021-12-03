@@ -8,6 +8,7 @@ export class Stock {
   produitList?: Produit[];
   createdAt:Date;
   updatedAt:Date;
+  checked:boolean
 
   constructor(qteMin, libelleStock, idStock?,createdAt?,updatedAt?) {
     this.qteMin = qteMin;

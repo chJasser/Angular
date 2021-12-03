@@ -61,6 +61,7 @@ export class StockListComponent implements OnInit {
     } else {
       this.stockService.search(this.searchVal).subscribe((res) => {
         this.my_Stock = res;
+        console.log(res)
       });
     }
   }

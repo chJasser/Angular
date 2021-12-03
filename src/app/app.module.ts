@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 
 
 import { authInterceptorProviders } from '../helpers/AuthInterceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { authInterceptorProviders } from '../helpers/AuthInterceptor';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
 
   ],
   providers: [authInterceptorProviders],
