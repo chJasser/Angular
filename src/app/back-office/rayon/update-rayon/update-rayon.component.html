@@ -41,10 +41,10 @@
       *ngIf="rayon.get('libelle').touched && rayon.get('libelle').invalid"
     >
       <p *ngIf="rayon.get('libelle').errors.required">
-        Libelle stock est obligatoire
+        Libelle rayon est obligatoire
       </p>
       <p *ngIf="rayon.get('libelle').errors.pattern">
-        Libelle stock accepte seulement des caractéres
+        Libelle rayon accepte seulement des caractéres
       </p>
       <p *ngIf="rayon.get('libelle').errors.minlength">
         la longueur minimale est
@@ -95,7 +95,7 @@
     <button
       [disabled]="rayon.invalid"
       data-bs-toggle="modal"
-      data-bs-target="#staticBackdrop"
+      data-bs-target="#staticBackdrop1"
       class="btn btn-primary"
     >
       Modifier Rayon
@@ -105,17 +105,17 @@
 </form>
 <div
   class="modal fade"
-  id="staticBackdrop"
+  id="staticBackdrop1"
   data-bs-backdrop="static"
   data-bs-keyboard="false"
   tabindex="-1"
-  aria-labelledby="staticBackdropLabel"
+  aria-labelledby="staticBackdrop1Label"
   aria-hidden="true"
 >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Gestion Stock</h5>
+        <h5 class="modal-title" id="staticBackdrop1Label">Gestion rayon</h5>
         <button
           type="button"
           class="btn-close"
@@ -123,7 +123,7 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="modal-body">stock ajouté avec success</div>
+      <div class="modal-body">rayon modifié avec success</div>
       <div class="modal-footer">
         <button
           type="button"

@@ -7,6 +7,17 @@
         class="fas fa-plus-circle mx-auto"
       ></i>
     </div>
+
+    <div class="col-3 mb-3">
+      <input
+        [(ngModel)]="searchVal"
+        (keyup)="serach()"
+        class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+    </div>
   </div>
   <div class="col-12">
     <app-add-stock
@@ -14,50 +25,75 @@
       (addStockStatus)="toogleStatus()"
       (addedStock)="addStockToList($event)"
     ></app-add-stock>
-    <app-update-stock (updated)="getStockList($event)" (updateStockStatus)="CloseUpdate()" [selectedStock]="stockToUpdate" *ngIf="updateStockStatus"></app-update-stock>
+    <app-update-stock
+      (updated)="getStockList($event)"
+      (updateStockStatus)="CloseUpdate()"
+      [selectedStock]="stockToUpdate"
+      *ngIf="updateStockStatus"
+    ></app-update-stock>
   </div>
   <div
     *ngFor="let item of my_Stock; let i = index"
-    class="col-12 col-sm-6 col-md-4"
+    class="col-12 col-md-6 "
   >
-    <div
-      [style.backgroundColor]="item.qte >= item.qteMin ? '' : '#dc3545'"
-      class="card"
-    >
-      <div
-        [class]="item.qte >= item.qteMin ? 'card-body' : 'card-body stockRp'"
-      >
-        <h5 style="font-weight: bold">{{ item.libelleStock | uppercase }}</h5>
-        <div class="text-right" style="margin-top: -1.7rem">
-          <i
-            (click)="toogleUpdateStock(item)"
-            class="fas fa-pen-square"
-            style="font-size: 1.6rem; cursor: pointer"
-          ></i>
-          <i
-            data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop"
-            class="fas fa-trash-alt ml-2"
-            style="font-size: 1.5rem; cursor: pointer"
-            (click)="getStockID(item.idStock)"
-          ></i>
+    <div class="card">
+      <div class="card-header">
+        <div class="d-flex justify-content-between">
+          <h5 style="font-weight: bold; margin-top: 7px">
+            {{ item.libelleStock | uppercase }}
+          </h5>
+          <div>
+            <button
+              (click)="toogleUpdateStock(item)"
+              class="btn btn-primary mr-2"
+            >
+              <i
+                class="fas fa-pen-square"
+                style="font-size: 1.2rem; cursor: pointer; color: white"
+              ></i>
+            </button>
+
+            <button
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+              (click)="getStockID(item.idStock)"
+              class="btn btn-danger"
+            >
+              <i
+                class="fas fa-trash-alt"
+                style="font-size: 1.2rem; cursor: pointer"
+              ></i>
+            </button>
+          </div>
         </div>
+      </div>
+      <div class="card-body" style="background-color: #d9d9d9">
         <p *ngIf="item.qteMin >= item.qte" class="card-text">
-          votre stock en <span class="fontWeight">rupture</span> la quantité
-          minimale est <span class="fontWeight">{{ item.qteMin }}</span> mais
-          vous avez <span class="fontWeight">{{ item.qte }}</span> produit en
-          stock.
+          votre stock en
+          <span class="fontWeight">rupture</span> la quantité
+          minimale est
+          <span class="fontWeight">{{ item.qteMin }}</span>
+          mais vous avez
+          <span class="fontWeight">{{ item.qte }}</span>
+          produit en stock.
         </p>
         <p *ngIf="item.qteMin < item.qte" class="card-text">
-          votre avez <span class="fontWeight">{{ item.qte }}</span> produit en
+          vous avez <span class="fontWeight">{{ item.qte }}</span> produit en
           stock et votre quantité minimale est
           <span class="fontWeight">{{ item.qteMin }}</span>
         </p>
+        <p class="card-text">
+          <span class="fontWeight"> Date creation : </span> {{ item.createdAt }}
+        </p>
+        <p *ngIf="item.updatedAt != null" class="card-text">
+          <span class="fontWeight"> Date modification : </span>
+          {{ item.updatedAt }}
+        </p>
         <button
-          [disabled]="item.produitList.length <= 0"
+          [disabled]="item.produitList.length == 0"
           style="color: white"
           id="productListButton"
-          class="btn btn-dark"
+          class="btn btn-success"
           [routerLink]="['/back/stock/detailstock', item.idStock]"
         >
           Afficher les produit

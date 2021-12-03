@@ -25,6 +25,7 @@ export class RayonListComponent implements OnInit {
   getAllRayons() {
     this.rayonService.getAllRayons().subscribe((res) => {
       this.rayon_list = res;
+      console.log(this.rayon_list)
     });
   }
 

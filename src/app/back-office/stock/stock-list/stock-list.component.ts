@@ -11,12 +11,14 @@ export class StockListComponent implements OnInit {
   my_Stock: Stock[];
   addstockStatus = false;
   updateStockStatus = false;
+  searchVal: string = '';
   stockToUpdate: Stock;
   stockId: bigint;
   constructor(private stockService: StockService) {}
   getAllStocks() {
     this.stockService.getAllStock().subscribe((res) => {
       this.my_Stock = res;
+      console.log(this.my_Stock);
     });
   }
   toogleAddStock() {
@@ -52,5 +54,15 @@ export class StockListComponent implements OnInit {
     this.stockToUpdate = stock;
     this.updateStockStatus = true;
     this.addstockStatus = false;
+  }
+  serach() {
+    if (this.searchVal == '') {
+      this.getAllStocks();
+    } else {
+      this.stockService.search(this.searchVal).subscribe((res) => {
+        this.my_Stock = res;
+        console.log(res)
+      });
+    }
   }
 }

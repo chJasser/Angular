@@ -216,7 +216,7 @@
       <div class="final__dropdown">
         <button class="final__dropdown__hover">Rayon</button>
         <div class="final__dropdown__menu">
-          <button type="button" style="width:150px;color:beige;background-color: chocolate;display: flex;"    *ngFor="let s of ListStock;let i=index" value="s.libelleStock"  (click)="sa(i)" (click)="getId(s.idStock)">{{s.libelleStock}}</button>>
+          <button type="button" style="width:150px;color:beige;background-color: chocolate;display: flex;"    *ngFor="let r of ListRayon;let i=index" value="r.libelle"  (click)="sa1(i)" (click)="getIdRayon(r.idRayon)">{{r.libelle}}</button>
          
         </div>
       </div>
@@ -236,8 +236,7 @@
  -->
 
 
-
-<!-- <div class="container row">
+ <div class="container row">
   <div class="col-md-12">
       <h1>Upload Image</h1>
   </div>
@@ -276,7 +275,7 @@
         </div>
     </div>
 </div>
- -->
+ 
  <div class="col-md-12 my-2">
   <button type="submit" [disabled]="Product.invalid"   data-bs-toggle="modal" data-bs-target="#staticBackdrop"  class="btn btn-primary">Ajouter produit</button>
   <button (click)="discardAdd()" class="btn btn-dark ml-3">Annuler</button>

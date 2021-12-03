@@ -14,52 +14,73 @@
       (rayonAdded)="addRayonToList($event)"
       *ngIf="addRayonStatus"
     ></app-add-rayon>
-    <app-update-rayon (updated)="getRayonList($event)" (updateRayonStatus)="CloseUpdate()" [selectedRayon]="rayonToUpdate" *ngIf="updateRayonStatus"></app-update-rayon>
-
+    <app-update-rayon
+      (updated)="getRayonList($event)"
+      (updateRayonStatus)="CloseUpdate()"
+      [selectedRayon]="rayonToUpdate"
+      *ngIf="updateRayonStatus"
+    ></app-update-rayon>
   </div>
   <div
     *ngFor="let item of rayon_list; let i = index"
-    class="col-12 col-sm-6 col-md-4"
+    class="col-12 col-md-6"
   >
-    <div
-      class="card"
-      [style.backgroundColor]="item.produitList.length > 0 ? '' : '#dc3545'"
-    >
-      <div
-        [class]="
-          item.produitList.length > 0 ? 'card-body' : 'card-body RayonVide'
-        "
-      >
-        <h5 style="font-weight: bold">{{ item.libelle | uppercase }}</h5>
-        <div class="text-right" style="margin-top: -1.7rem">
-          <i
-            class="fas fa-pen-square"
-            style="font-size: 1.6rem; cursor: pointer"
-             (click)="toogleUpdateRayon(item)"
-          ></i>
+    <!-- [style.backgroundColor]="item.produitList.length >= 0 ? 'black' : '#dc3545'" -->
+    <div class="card">
+      <div class="card-header">
+        <div class="d-flex justify-content-between">
+          <h5 style="font-weight: bold; margin-top: 7px">{{ item.libelle | uppercase }}</h5>
+          <div>
+            <button
+              (click)="toogleUpdateRayon(item)"
+              class="btn btn-primary mr-2"
+            >
+              <i
+                class="fas fa-pen-square"
+                s
+                style="font-size: 1.2rem; cursor: pointer; color: white"
+              ></i>
+            </button>
 
-          <i
-            data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop"
-            class="fas fa-trash-alt ml-2"
-            style="font-size: 1.5rem; cursor: pointer"
-            (click)="getRayonById(item.idRayon)"
-          ></i>
+            <button
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+              (click)="getRayonById(item.idRayon)"
+              class="btn btn-danger"
+            >
+              <i
+                class="fas fa-trash-alt"
+                style="font-size: 1.2rem; cursor: pointer"
+              ></i>
+            </button>
+          </div>
         </div>
-
+      </div>
+      <div class="card-body" style="background-color: #d9d9d9">
         <p class="card-text">Code : {{ item.code }}</p>
-        <p class="card-text">
-          Nombre des produits : {{ item.produitList.length }}
+        <p *ngIf="item.produitList.length == 0" class="card-text">
+          Votre rayon est <span class="fontWeight">vide</span> ,il contient
+          <span class="fontWeight">{{ item.produitList.length }}</span> produits.
         </p>
+        <p *ngIf="item.produitList.length != 0" class="card-text">
+          Votre rayon contient
+          <span class="fontWeight">{{ item.produitList.length }}</span> produits.
+        </p>
+        <p class="card-text">
+          <span class="fontWeight"> Date creation : </span> {{ item.createdAt }}
+        </p>
+        <p *ngIf="item.updatedAt != null" class="card-text">
+          <span class="fontWeight"> Date modification : </span>
+          {{ item.updatedAt }}
+        </p>
+
         <button
-          [disabled]="item.produitList.length <= 0"
+          [disabled]="item.produitList.length == 0"
           style="color: white"
           id="productListButton"
           class="btn btn-dark"
           [routerLink]="['/back/rayon/detailrayon', item.idRayon]"
         >
-
-
           Afficher les produit
         </button>
       </div>

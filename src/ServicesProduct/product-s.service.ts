@@ -54,8 +54,9 @@ export class ProduitSService {
     return this.HS.get<Produit[]>(this.url + 'retrieve-all-produits2/' + prix);
   }
 
-  addProduct(produit: Produit,idStock:number): Observable<Produit> {
-    return this.HS.post<Produit>(this.url + 'add-produit/'+idStock+'/1', produit, this.httpOptions);
+  addProduct(produit: Produit,idStock:number,idRayon:number): Observable<Produit> {
+
+    return this.HS.post<Produit>(this.url + 'add-produit/'+idStock+'/'+idRayon, produit, this.httpOptions);
   }
         
   updateProduct(produit: Produit,id:number): Observable<Produit> {
