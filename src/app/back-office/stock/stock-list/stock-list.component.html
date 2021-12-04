@@ -7,19 +7,89 @@
         class="fas fa-plus-circle mx-auto"
       ></i>
     </div>
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> Barre de recherhe</mat-panel-title>
+          <mat-panel-description>
+           Barre de recherche {{ panelOpenState ? "ouverte" : "fermé" }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
 
-    <div class="col-3 mb-3">
-      <input
-        [(ngModel)]="searchVal"
-        (keyup)="serach()"
-        class="form-control me-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
-    </div>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 px-2 mt-2">
+                <form class="example-form w-100">
+                  <mat-form-field
+                    class="example-full-width w-100"
+                    appearance="fill"
+                  >
+                    <mat-label>Libelle Stock:</mat-label>
+                    <input
+                      matInput
+                      type="search"
+                      value=""
+                      #p
+                      (keyup)="
+                        serach(p.value, date1.value, date2.value)
+                      "
+                      placeholder="search"
+                    />
+                  </mat-form-field>
+                </form>
+              </div>
+
+              <div class="col-md-6 px-2">
+                <mat-label>Nombres des produits:</mat-label>
+                <mat-slider
+                  class="w-100"
+                  thumbLabel
+                  [displayWith]="formatLabel"
+                  tickInterval="1000"
+                  step="1"
+                  min="0"
+                  #slider
+                  max="20"
+                  (change)="serach(p.value, date1.value, date2.value, slider.value)"
+                  aria-label="units"
+                ></mat-slider>
+              </div>
+              <div class="col-md-6 px-2">
+                <mat-form-field class="w-100" appearance="fill">
+                  <mat-label>Date de début</mat-label>
+                  <input
+                    matInput
+                    type="date"
+                    (change)="
+                      serach(p.value, date1.value, date2.value)
+                    "
+                    #date1
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-md-6 px-2">
+                <mat-form-field class="w-100" appearance="fill">
+                  <mat-label>Date de fin</mat-label>
+                  <input
+                    matInput
+                    type="date"
+                    (change)="
+                      serach(p.value, date1.value, date2.value)
+                    "
+                    #date2
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
   </div>
-  <div class="col-12">
+  <div class="col-12 mt-3">
     <app-add-stock
       *ngIf="addstockStatus"
       (addStockStatus)="toogleStatus()"
@@ -32,10 +102,7 @@
       *ngIf="updateStockStatus"
     ></app-update-stock>
   </div>
-  <div
-    *ngFor="let item of my_Stock; let i = index"
-    class="col-12 col-md-6 "
-  >
+  <div *ngFor="let item of my_Stock; let i = index" class="col-12 col-md-6">
     <div class="card">
       <div class="card-header">
         <div class="d-flex justify-content-between">
@@ -70,8 +137,7 @@
       <div class="card-body" style="background-color: #d9d9d9">
         <p *ngIf="item.qteMin >= item.qte" class="card-text">
           votre stock en
-          <span class="fontWeight">rupture</span> la quantité
-          minimale est
+          <span class="fontWeight">rupture</span> la quantité minimale est
           <span class="fontWeight">{{ item.qteMin }}</span>
           mais vous avez
           <span class="fontWeight">{{ item.qte }}</span>

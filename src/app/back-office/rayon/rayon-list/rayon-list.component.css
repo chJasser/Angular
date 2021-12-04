@@ -6,3 +6,20 @@
   font-weight: 700;
   color: red;
 }
+.card{
+  min-height: 15rem;
+}
+#productListButton
+{
+  position: absolute;
+  bottom: 1rem !important;
+}
+.fontWeight
+{
+  font-weight: 700;
+  color: red;
+}
+
+.btn{
+  padding: 1!important;
+}

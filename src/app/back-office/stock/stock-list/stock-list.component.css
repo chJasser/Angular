@@ -1,10 +1,10 @@
 .card{
-  min-height: 18rem;
+  min-height: 16rem;
 }
 #productListButton
 {
   position: absolute;
-  bottom: 1rem !important;
+  bottom: 0.5rem !important;
 }
 .fontWeight
 {
