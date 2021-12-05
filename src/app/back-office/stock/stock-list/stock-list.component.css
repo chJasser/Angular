@@ -1,19 +1,46 @@
-.card{
+.card {
   min-height: 16rem;
 }
-#productListButton
-{
+#productListButton {
   position: absolute;
   bottom: 0.5rem !important;
 }
-.fontWeight
-{
+.fontWeight {
   font-weight: 700;
   color: red;
 }
-.stockRp{
+.stockRp {
   color: white;
 }
-.btn{
-  padding: 1!important;
+.btn {
+  padding: 1 !important;
+}
+.sortSection {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+.sortSection h5 {
+  margin: 1rem 0;
+}
+.sortItem i {
+  color: #0858d8cf;
+  cursor: pointer;
+  margin: 0 10px 0 0;
+  transition: ease-in-out 0.2s;
+  font-size: 1rem;
+}
+.sortItem i:hover {
+  color: #0c0093;
+}
+@media screen and (max-width: 1199px) {
+  .sortSection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .sortSection h5 {
+    margin: 0.3rem 1rem;
+  }
+
 }

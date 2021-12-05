@@ -28,12 +28,7 @@ export class StockListComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getAllStocks();
-  /*   this.getStockCreatedAtAsc();
-    this.getStockCreatedAtDesc(); */
- /*    this.getStockUpdatedAtAsc();
-    this.getStockUpdatedAtDesc(); */
-    this.getStockQtetAsc();
-    this.getStockQteDesc();
+
   }
   addStockToList(stock: Stock) {
     this.my_Stock.push(stock);
@@ -78,38 +73,46 @@ export class StockListComponent implements OnInit {
   getStockCreatedAtDesc() {
     this.stockService.getStockByCreatedDateDesc().subscribe((res) => {
       this.my_Stock = res;
-      console.log(this.my_Stock);
+      console.log('desc');
     });
   }
   getStockCreatedAtAsc() {
     this.stockService.getStockByCreatedDateAsc().subscribe((res) => {
       this.my_Stock = res;
-      console.log(this.my_Stock);
+      console.log('asc');
     });
   }
 
   getStockUpdatedAtDesc() {
     this.stockService.getStockByUpdatedDateDesc().subscribe((res) => {
       this.my_Stock = res;
-      console.log(this.my_Stock);
     });
   }
   getStockUpdatedAtAsc() {
     this.stockService.getStockByUpdatedAtDateAsc().subscribe((res) => {
       this.my_Stock = res;
-      console.log(this.my_Stock);
     });
   }
   getStockQteDesc() {
     this.stockService.getStockByQteDesc().subscribe((res) => {
       this.my_Stock = res;
-      console.log(this.my_Stock);
     });
   }
   getStockQtetAsc() {
     this.stockService.getStockByQteAsc().subscribe((res) => {
       this.my_Stock = res;
-      console.log(this.my_Stock);
+    });
+  }
+
+  getStockLibelleDesc() {
+    this.stockService.getStockByLibelleDesc().subscribe((res) => {
+      this.my_Stock = res;
+    });
+  }
+  getStockLibelletAsc() {
+    this.stockService.getStockByLibelleAsc().subscribe((res) => {
+      this.my_Stock = res;
+
     });
   }
 }

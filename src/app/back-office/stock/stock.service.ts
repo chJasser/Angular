@@ -94,5 +94,19 @@ export class StockService {
       this.httpOptions
     );
   }
+
+  getStockByLibelleDesc(): Observable<Stock[]> {
+    return this.HS.get<Stock[]>(
+      this.url + 'stock-libelle-desc',
+      this.httpOptions
+    );
+  }
+
+  getStockByLibelleAsc(): Observable<Stock[]> {
+    return this.HS.get<Stock[]>(
+      this.url + 'stock-libelle-asc',
+      this.httpOptions
+    );
+  }
 }
 
