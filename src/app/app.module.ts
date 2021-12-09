@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { authInterceptorProviders } from '../helpers/AuthInterceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgxPaginationModule
 
   ],
   providers: [authInterceptorProviders],

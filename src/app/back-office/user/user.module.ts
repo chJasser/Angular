@@ -4,19 +4,25 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddAdminComponent } from './add-admin/add-admin.component';
+import { ListUsersComponent } from './list-users/list-users.component';
+import { UserActionButtonComponent } from './user-action-button/user-action-button.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
 @NgModule({
   declarations: [
-    AddAdminComponent
+    AddAdminComponent,
+    ListUsersComponent,
+    UserActionButtonComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    UserRoutingMdule
+    UserRoutingMdule,
+    NgxPaginationModule
   ]
 })
 export class UserModule { }

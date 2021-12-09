@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from 'src/Model/User';
 
 const API_URL = 'http://localhost:8089/SpringMVC/api/test/';
 const REAL_URL = 'http://localhost:8089/SpringMVC/user/';
@@ -20,6 +21,19 @@ export class UserService {
      return this.http.put('http://localhost:8089/SpringMVC/user/assign-admin/',id , { responseType: 'text' } ).subscribe( 
       data => console.log(data) );
   }
+
+
+
+
+  getAll(params: any): Observable<any> {
+    return this.http.get<any>('http://localhost:8089/SpringMVC/user/paginate/users', { params });
+  }
+
+
+  listUsers(): Observable<User[]>{
+    return this.http.get<User[]>('http://localhost:8089/SpringMVC/user/retrieve-all-user');
+    }
+
   getPublicContent(): Observable<any> {
     return this.http.get(API_URL + 'all', { responseType: 'text' });
   }
