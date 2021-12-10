@@ -2,6 +2,9 @@ import { SearchStock } from './../../../../Model/SerachStock';
 import { Component, OnInit } from '@angular/core';
 import { Stock } from 'src/Model/Stock';
 import { StockService } from '../stock.service';
+import { ProduitSService } from 'src/ServicesProduct/product-s.service';
+import { Produit } from 'src/Model/Produit';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-stock-list',
@@ -16,7 +19,11 @@ export class StockListComponent implements OnInit {
   stockToUpdate: Stock;
   stockId: bigint;
   panelOpenState = false;
-  constructor(private stockService: StockService) {}
+  constructor(
+    private stockService: StockService,
+    private produitService: ProduitSService,
+    private toastr: ToastrService
+  ) {}
   getAllStocks() {
     this.stockService.getAllStock().subscribe((res) => {
       this.my_Stock = res;
@@ -28,7 +35,6 @@ export class StockListComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getAllStocks();
-
   }
   addStockToList(stock: Stock) {
     this.my_Stock.push(stock);
@@ -73,13 +79,11 @@ export class StockListComponent implements OnInit {
   getStockCreatedAtDesc() {
     this.stockService.getStockByCreatedDateDesc().subscribe((res) => {
       this.my_Stock = res;
-      console.log('desc');
     });
   }
   getStockCreatedAtAsc() {
     this.stockService.getStockByCreatedDateAsc().subscribe((res) => {
       this.my_Stock = res;
-      console.log('asc');
     });
   }
 
@@ -112,7 +116,42 @@ export class StockListComponent implements OnInit {
   getStockLibelletAsc() {
     this.stockService.getStockByLibelleAsc().subscribe((res) => {
       this.my_Stock = res;
-
     });
+  }
+  productList: Produit[] = [];
+  idStock: bigint;
+  getAllProduct(id: bigint) {
+    this.produitService.getProductNotAvInStock(id).subscribe((res) => {
+      this.productList = res;
+      this.idStock = id;
+    });
+  }
+  productIdList: number[] = [];
+  getProductid(id: number) {
+    if (!this.productIdList.includes(id)) {
+      this.productIdList.push(id);
+    }
+  }
+
+  retriveProduit(i: number) {
+    this.productIdList = this.productIdList.filter(function (item) {
+      return item !== i;
+    });
+    console.log(this.productIdList);
+  }
+  assignProductListToStock() {
+    this.stockService
+      .assignListproductToStock(this.idStock, this.productIdList)
+      .subscribe((res) => {
+        this.my_Stock.forEach((item) => {
+          this.stockService.calculStock(item.idStock).subscribe((res) => {});
+        });
+        this.toastr.success(
+
+          'vous avez affecter ' + this.productIdList.length + 'produit(s)',
+          'Gestion Stock'
+        );
+        this.getAllStocks();
+      });
   }
 }

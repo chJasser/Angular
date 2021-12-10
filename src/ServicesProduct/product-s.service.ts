@@ -24,7 +24,7 @@ export class ProduitSService {
       'http://localhost:8089/SpringMVC/produit/remove-produit' + '/' + id
     );
   }
- 
+
   getAllproduct(): Observable<Produit[]> {
     return this.HS.get<Produit[]>(this.url + 'retrieve-all-produits');
   }
@@ -58,12 +58,14 @@ export class ProduitSService {
 
     return this.HS.post<Produit>(this.url + 'add-produit/'+idStock+'/'+idRayon, produit, this.httpOptions);
   }
-        
+
   updateProduct(produit: Produit,id:number): Observable<Produit> {
     return this.HS.put<Produit>(this.url + 'modify-produit/'+id,produit,this.httpOptions);
   }
 
 
 
-  
+  getProductNotAvInStock(stockId:bigint): Observable<Produit[]> {
+    return this.HS.get<Produit[]>(this.url + 'retrieve-notstock-produits/'+stockId);
+  }
 }

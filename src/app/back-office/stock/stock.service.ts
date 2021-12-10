@@ -82,17 +82,11 @@ export class StockService {
   }
 
   getStockByQteDesc(): Observable<Stock[]> {
-    return this.HS.get<Stock[]>(
-      this.url + 'stock-qte-Desc',
-      this.httpOptions
-    );
+    return this.HS.get<Stock[]>(this.url + 'stock-qte-Desc', this.httpOptions);
   }
 
   getStockByQteAsc(): Observable<Stock[]> {
-    return this.HS.get<Stock[]>(
-      this.url + 'stock-qte-Asc',
-      this.httpOptions
-    );
+    return this.HS.get<Stock[]>(this.url + 'stock-qte-Asc', this.httpOptions);
   }
 
   getStockByLibelleDesc(): Observable<Stock[]> {
@@ -108,5 +102,15 @@ export class StockService {
       this.httpOptions
     );
   }
-}
+  assignListproductToStock(stockId: bigint, listId: number[]) {
+    return this.HS.put(
+      this.url + 'assign-productlist-to-stock/' + stockId,
+      listId,
+      this.httpOptions
+    );
+  }
 
+  calculStock(stockId: bigint) {
+    return this.HS.put(this.url + 'calcul-stock/' + stockId, this.httpOptions);
+  }
+}
