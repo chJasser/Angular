@@ -1,4 +1,4 @@
-<div class="container-sm mt-5">
+<div class="container-m mt-5">
   <div class="input-group p-3">
     <input
       type="text"
@@ -15,19 +15,32 @@
         Search
       </button>
     </div>
+  <div> 
+      <select class="form-select" aria-label="Default select example" (change)="onChangeCategorie($event,cat.value)" #cat>
+        <option selected>Categorie Client :  </option>
+        <option value=""> Tous</option>
+        <option value="Fidele">Fidele</option>
+        <option value="Ordinaire">Ordinaire</option>
+        <option value="Premuim">Premuim</option>
+      </select>
+  </div>
   </div>
 </div>
 
 <div class="container">
   <h3 class="text-center display-4">Liste des utilisateurs</h3>
 
-  <table class="table">
-    <thead>
+  <table class="table table-striped table-hover table-sm">
+    <thead class="table-light">
       <tr>
         <th>ID</th>
         <th>EMAIL</th>
+        <th>Categorie</th>
         <th>ROLE</th>
+        <th>Action</th>
+        
       </tr>
+      
     </thead>
     <tbody>
       <tr
@@ -46,7 +59,17 @@
       >
         <th scope="row">{{ user.idClient }}</th>
         <td>{{ user.email }}</td>
+        <td>{{ user.categorieClient }}</td>
         <td > {{user.roles[0].name}} </td>
+        <td class="d-flex "> 
+          <select class="form-select" aria-label="Default select example" #act>
+            <option selected>Action : </option>
+            <option value="make_admin">Designer comme administrateur</option>
+            <option value="withhold_admin">Retirer de l'administration</option>
+            <option value="delete">Supprimer</option>
+          </select>
+          <app-user-action-button  [action]="act.value" [id]="user.idClient" (editedEmitter)=refreshUsers($event)></app-user-action-button>
+        </td>
       </tr>
     </tbody>
   </table>

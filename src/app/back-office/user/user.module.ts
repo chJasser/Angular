@@ -7,6 +7,7 @@ import { AddAdminComponent } from './add-admin/add-admin.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { UserActionButtonComponent } from './user-action-button/user-action-button.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ActionButtonComponent } from './action-button/action-button.component';
 
 
 
@@ -14,7 +15,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
   declarations: [
     AddAdminComponent,
     ListUsersComponent,
-    UserActionButtonComponent
+    UserActionButtonComponent,
+    ActionButtonComponent
   ],
   imports: [
     CommonModule,

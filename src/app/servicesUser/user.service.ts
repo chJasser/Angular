@@ -14,18 +14,26 @@ export class UserService {
   ngOnInit() {
 
     }
-  body ={ 'id':8} ;
+  //body ={ 'id':8} ;
+
+
+
+
   assignAdmin(id: number): any {
-//MAHYECH 9A3DA T3AYET LEL LIEN WALA MANICH AAREF
     console.log("service called with id : "+ id)
      return this.http.put('http://localhost:8089/SpringMVC/user/assign-admin/',id , { responseType: 'text' } ).subscribe( 
+      data => console.log(data) );
+  }
+  withholdAdmin(id: number): any {
+    console.log("service called with id : "+ id)
+     return this.http.put('http://localhost:8089/SpringMVC/user/withhold-admin/',id , { responseType: 'text' } ).subscribe( 
       data => console.log(data) );
   }
 
 
 
-
   getAll(params: any): Observable<any> {
+    console.log(params);
     return this.http.get<any>('http://localhost:8089/SpringMVC/user/paginate/users', { params });
   }
 

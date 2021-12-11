@@ -1,7 +1,8 @@
+import { Router } from '@angular/router';
 import { UserService } from './../../../servicesUser/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { User } from 'src/Model/User';
-
+import { UserActionButtonComponent } from '../user-action-button/user-action-button.component';
 @Component({
   selector: 'app-list-users',
   templateUrl: './list-users.component.html',
@@ -12,26 +13,41 @@ export class ListUsersComponent implements OnInit {
  // currentTutorial: User = {}; 
   currentIndex = -1;
   email = '';
-
+  categorie ='';
   page = 1;
   count = 0;
   pageSize = 3;
   pageSizes = [3, 6, 9];
 
-  constructor(private userService : UserService) { }
+
+ isUidPresent :false;
+
+ @Output() action :string;
+
+  constructor(private userService : UserService,private router:Router    ) { }
  
   ngOnInit(): void {
-    this.retrieveTutorials();
+    this.retrieveUsers();
   }
 
-  
-  getRequestParams(email: string, page: number, pageSize: number): any {
+  refreshUsers($event): void {
+    this.retrieveUsers();
+  }
+
+  onChangeCategorie(event,cat:string){
+    this.categorie=cat;
+  }
+
+   
+  getRequestParams(categorie: string ,email: string, page: number, pageSize: number): any {
     let params: any = {};
 
     if (email) {
       params[`email`] = email;
     }
-
+    if (categorie) {
+      params[`categorie`] = categorie;
+    }
     if (page) {
       params[`page`] = page - 1;
     }
@@ -43,9 +59,9 @@ export class ListUsersComponent implements OnInit {
     return params;
   }
 
-  retrieveTutorials(): void {
-    const params = this.getRequestParams(this.email, this.page, this.pageSize);
-
+  retrieveUsers(): void {
+    const params = this.getRequestParams(this.categorie,this.email, this.page, this.pageSize);
+ 
     this.userService.getAll(params)
     .subscribe(
       response => {
@@ -61,21 +77,21 @@ export class ListUsersComponent implements OnInit {
 
   handlePageChange(event: number): void {
     this.page = event;
-    this.retrieveTutorials();
+    this.retrieveUsers();
   }
 
   handlePageSizeChange(event: any): void {
     this.pageSize = event.target.value;
     this.page = 1;
-    this.retrieveTutorials();
+    this.retrieveUsers();
   }
 
   searchTitle(): void {
     this.page = 1;
-    this.retrieveTutorials();
+    this.retrieveUsers();
   }
  /* refreshList(): void {
-    this.retrieveTutorials();
+    this.retrieveUsers();
     this.currentTutorial = {};
     this.currentIndex = -1;
   }
