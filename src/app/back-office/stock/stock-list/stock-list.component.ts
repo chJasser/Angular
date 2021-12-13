@@ -144,14 +144,17 @@ export class StockListComponent implements OnInit {
       .assignListproductToStock(this.idStock, this.productIdList)
       .subscribe((res) => {
         this.my_Stock.forEach((item) => {
-          this.stockService.calculStock(item.idStock).subscribe((res) => {});
+          this.stockService.calculStock(item.idStock).subscribe((res) => {
+            this.getAllStocks();
+            
+          });
         });
         this.toastr.success(
 
           'vous avez affecter ' + this.productIdList.length + 'produit(s)',
           'Gestion Stock'
         );
-        this.getAllStocks();
+
       });
   }
 }
