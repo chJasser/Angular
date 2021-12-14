@@ -1,0 +1,173 @@
+
+<!-- <select class="selectpicker" multiple>
+    <option>Mustard</option>
+    <option>Ketchup</option>
+    <option>Relish</option>
+  </select> -->
+
+  <style>
+    .final__dropdown{
+      position: relative;
+      z-index: 10;
+      display: inline-block;
+    }
+      .final__dropdown__hover{
+        display: inline-block;
+        padding: 10px;
+        background-color:chocolate;
+        color: #ffffff;
+        border:0 solid #323b40;
+        cursor: pointer;
+      }
+      .final__dropdown__hover:hover{background-color:burlywood;}
+      .final__dropdown__menu{
+        position: absolute;
+        display: none;
+        top: 100%;
+        left: 0;
+        min-width: 150px;
+        background-color: #ffffff;
+        color: #323b40;
+        box-shadow: 0 3px 2px rgba(0,0,0,0.3);
+      }
+      .final__dropdown:hover .final__dropdown__menu{display: block;}
+        .final__dropdown__menu a{
+          display: block;
+          padding: 10px;
+          text-decoration: none;
+          border-width: 0;
+          border-top: 1px solid #e0e0e0;
+        }
+        .final__dropdown__menu a:hover{
+          background-color:#f0f0f0;
+          color: #323b40;
+        }
+    
+    .final-result{
+      justify-content:flex-end;
+    }
+    
+    
+    .form__group {
+       position: relative;
+       padding: 15px 0 0;
+       margin-top: 10px;
+       width: 50%;
+    }
+     .form__field {
+       font-family: inherit;
+       width: 100%;
+       border: 0;
+       border-bottom: 2px solid #9b9b9b;
+       outline: 0;
+       font-size: 1.3rem;
+       color: black;
+       padding: 7px 0;
+       background: transparent;
+       transition: border-color 0.2s;
+    }
+     .form__field::placeholder {
+       color: transparent;
+    }
+     .form__field:placeholder-shown ~ .form__label {
+       font-size: 1.3rem;
+       cursor: text;
+       top: 20px;
+    }
+     .form__label {
+       position: absolute;
+       top: 0;
+       display: block;
+       transition: 0.2s;
+       font-size: 1rem;
+       color: #9b9b9b;
+    }
+     .form__field:focus {
+       padding-bottom: 6px;
+       font-weight: 700;
+       border-width: 3px;
+       border-image: linear-gradient(to right, #11998e, #38ef7d);
+       border-image-slice: 1;
+    }
+     .form__field:focus ~ .form__label {
+       position: absolute;
+       top: 0;
+       display: block;
+       transition: 0.2s;
+       font-size: 1rem;
+       color: #11998e;
+       font-weight: 700;
+    }
+    /* reset input */
+     .form__field:required, .form__field:invalid {
+       box-shadow: none;
+    }
+    /* demo */
+     body {
+       font-family: 'Poppins', sans-serif;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       min-height: 100vh;
+       font-size: 1.5rem;
+       background-color: #222;
+    }
+     
+    
+    
+    
+    
+    
+    </style>
+  <h2 style="text-align: center;">Affecter un produit à un stock</h2>>
+  <section>
+
+    <label for="pet-select" style="margin-left: 1.5rem;">Rayon </label>>
+    <div class="final__dropdown">
+      <button class="final__dropdown__hover">Rayon</button>
+      <div class="final__dropdown__menu">
+        <button type="button" style="width:150px;color:beige;background-color: chocolate;display: flex;"    *ngFor="let r of ListRayon;let i=index" value="r.libelle"  (click)="getRayon(r.libelle)" (click)="getIdRayon(r.idRayon)">{{r.libelle}}</button>
+       
+      </div>
+    </div>
+    <div class="form__group field">
+      Libelle de rayon :<input type="text" #rayon style="font-size: small;" disabled [value]="rayonChoisit" class="form__field" placeholder="Name">    
+    </div>
+  </section>
+
+
+  <section>
+
+    <label for="pet-select" style="margin-left: 1.5rem;">Produit </label>>
+    <div class="final__dropdown">
+      <button class="final__dropdown__hover">Produit</button>
+      <div class="final__dropdown__menu">
+        <button type="button" style="width:150px;color:beige;background-color: chocolate;display: flex;"    *ngFor="let p of ListProduit;let i=index" value="p.libelle"  (click)="getProduit(p.libelle)" (click)="getIdProduit(p.idProduit)">{{p.libelle}}</button>
+       
+      </div>
+    </div>
+    <div class="form__group field">
+      Libelle du produit :<input type="text" #prod style="font-size: small;" disabled [value]="ProduitChoisit" class="form__field" placeholder="Name">    
+    </div>
+  </section>
+
+
+
+  <button data-bs-toggle="modal" data-bs-target="#staticBackdrop"  class="btn btn-primary" type="submit"  [disabled]="prod.value=='' || rayon.value=='' " (click)="AffecterProduitRayon(idProduit,idRayona)">Affecter produit</button>
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Gestion Produit</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         Produit affecté à un stock avec success
+        </div>
+        <div class="modal-footer">
+          <button  type="button"  (click)="AffecterProduitRayon(idProduit,idRayona)" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>

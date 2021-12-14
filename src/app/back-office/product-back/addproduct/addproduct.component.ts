@@ -1,6 +1,7 @@
- import { HttpClient } from '@angular/common/http';
+ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { detailProduit } from 'src/Model/detaiProduit';
 import { ImageModel } from 'src/Model/ImageModel';
 import { Produit } from 'src/Model/Produit';
@@ -9,6 +10,7 @@ import { Stock } from 'src/Model/Stock';
 import { ProduitSService } from 'src/ServicesProduct/product-s.service';
 import { RayonService } from '../../rayon/rayon.service';
 import { StockService } from '../../stock/stock.service';
+import { ImageService } from '../image.service';
 
 @Component({
   selector: 'app-addproduct',
@@ -17,15 +19,23 @@ import { StockService } from '../../stock/stock.service';
 })
 export class AddproductComponent implements OnInit {
 
-  constructor(private ps:ProduitSService,private ss:StockService,private HS:HttpClient,private sr:RayonService) { }
+  constructor(private is:ImageService,private ps:ProduitSService,private ss:StockService,private HS:HttpClient,private sr:RayonService,private router:Router) { }
   Product: FormGroup;
   myProduit: Produit;
 
 
+
+
+
+  rayon:string
+  stockk:string
+voir:boolean=false;
   @Output() addedProduct = new EventEmitter<Produit>();
   @Output() addProductStatus = new EventEmitter<boolean>();
 
+  AvecImage:Produit
   Image:any;
+  iddd:any;
   ImageAdd:ImageModel;
   selectedFile: File;
   retrievedImage: any;
@@ -39,12 +49,26 @@ idRayonProduit:number;
   ListRayon:Rayon[];
   detailProduit:detailProduit;
 
+  libelleStockChoisit:string="";
+  rayonChoisit:string="";
+
 
   public onFileChanged(event) {
     //Select File
     this.selectedFile = event.target.files[0];
   }
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+
+  test(){
+    if(this.rayonChoisit!="" && this.libelleStockChoisit!=""){
+      this.voir=true;
+    }
+  }
 
   onUpload() {
     console.log(this.selectedFile);
@@ -54,10 +78,19 @@ idRayonProduit:number;
     uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
   
     //Make a call to the Spring Boot Application to save the image
-    this.HS.post('http://localhost:8089/SpringMVC/image/upload', uploadImageData)
-      .subscribe((res) => {this.Image=res
+    this.HS.post('http://localhost:8089/SpringMVC/image/upload', uploadImageData,this.httpOptions)
+  .subscribe((res) => {this.iddd=res;
       console.log("image created",this.Image)});
+      this.is.upload(uploadImageData).subscribe((res)=>{this.iddd=res;console.log("image created id n° ",this.iddd)})
+  
+   }
 
+  getLibelle(libelle:string){
+    this.libelleStockChoisit=libelle;
+  }
+
+  getRayon(libelleRayon:string){
+    this.rayonChoisit=libelleRayon;
   }
 
 
@@ -68,6 +101,7 @@ idRayonProduit:number;
        this.idStockProduit=Number(res.idStock);
        console.log(this.idStockProduit);
     });
+   
   }
 
 
@@ -155,14 +189,21 @@ this.detailProduit=new detailProduit(this.Product.get('category').value)
       this.Product.get('libelle').value,
       this.Product.get('prixUnitaire').value,
       this.detailProduit,
-      null
+      this.Image
     );
-
     console.log(this.myProduit);
-    
+    console.log(this.myProduit.idProduit);
     this.ps.addProduct(this.myProduit,this.idStockProduit,this.idRayonProduit).subscribe((res) => {
       console.log('Product created!', res);
+      this.ps.assignProduitToImage(this.iddd,res.idProduit).subscribe(
+        (res)=>{this.AvecImage=res;
+        console.log(this.AvecImage);}
+      )
+      
     });
+
+    this.router.navigate(['/back']);
+  
     
   } 
 

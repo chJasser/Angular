@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { detailProduit } from 'src/Model/detaiProduit';
 import { Produit } from 'src/Model/Produit';
 import { Stock } from 'src/Model/Stock';
@@ -15,7 +16,8 @@ export class UpdateProductComponent implements OnInit {
   detailProduit: detailProduit;
   ListStock:Stock[];
   idStockProduit:number;
-  constructor(private ps:ProduitSService,private ss:StockService) { }
+
+  constructor(private ps:ProduitSService,private ss:StockService,private router:Router) { }
   
   @Output() updateProductStatus = new EventEmitter<boolean>();
   @Input() selectedProduct: Produit;
@@ -31,25 +33,26 @@ console.log(this.selectedProduct);
   ngOnChanges(changes: SimpleChanges) {
     if (changes.selectedProduct.firstChange) {
       this.Product = new FormGroup({
-        id: new FormControl(''),
-        prixUnitaire: new FormControl('', [
+        id: new FormControl(this.selectedProduct.idProduit),
+        prixUnitaire: new FormControl(this.selectedProduct.prixUnitaire, [
           Validators.required,
           Validators.pattern('^[0-9]*$'),
         ]),
-        libelle: new FormControl('', [
+        libelle: new FormControl(this.selectedProduct.libelle, [
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(12),
           Validators.pattern('^[a-zA-Z]*$'),
         ]),
-        code: new FormControl('', [
+        code: new FormControl(this.selectedProduct.code, [
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(12),
           Validators.pattern('^[a-zA-Z]*$'),
         ]),
-        category: new FormControl('', [
+        category: new FormControl(this.selectedProduct.detailProduit.categorieProduit, [
         ]),
+        
   
       });
     } else {
@@ -103,6 +106,7 @@ console.log(this.selectedProduct);
     console.log(this.myProduct);
     this.ps.updateProduct(this.myProduct,this.Product.get('id').value).subscribe((res) => {
       console.log('Product updated!' + res);
+      this.router.navigate(['/back']);
     });
   }
 

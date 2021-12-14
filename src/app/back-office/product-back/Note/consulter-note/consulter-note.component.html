@@ -1,0 +1,161 @@
+<style>
+    .final__dropdown{
+      position: relative;
+      z-index: 10;
+      display: inline-block;
+    }
+      .final__dropdown__hover{
+        display: inline-block;
+        padding: 10px;
+        background-color:chocolate;
+        color: #ffffff;
+        border:0 solid #323b40;
+        cursor: pointer;
+      }
+      .final__dropdown__hover:hover{background-color:burlywood;}
+      .final__dropdown__menu{
+        position: absolute;
+        display: none;
+        top: 100%;
+        left: 0;
+        min-width: 150px;
+        background-color: #ffffff;
+        color: #323b40;
+        box-shadow: 0 3px 2px rgba(0,0,0,0.3);
+      }
+      .final__dropdown:hover .final__dropdown__menu{display: block;}
+        .final__dropdown__menu a{
+          display: block;
+          padding: 10px;
+          text-decoration: none;
+          border-width: 0;
+          border-top: 1px solid #e0e0e0;
+        }
+        .final__dropdown__menu a:hover{
+          background-color:#f0f0f0;
+          color: #323b40;
+        }
+    
+    .final-result{
+      justify-content:flex-end;
+    }
+    
+    
+    .form__group {
+         position: relative;
+         padding: 15px 0 0;
+         margin-top: 10px;
+         width: 50%;
+    }
+     .form__field {
+         font-family: inherit;
+         width: 100%;
+         border: 0;
+         border-bottom: 2px solid #9b9b9b;
+         outline: 0;
+         font-size: 1.3rem;
+         color: black;
+         padding: 7px 0;
+         background: transparent;
+         transition: border-color 0.2s;
+    }
+     .form__field::placeholder {
+         color: transparent;
+    }
+     .form__field:placeholder-shown ~ .form__label {
+         font-size: 1.3rem;
+         cursor: text;
+         top: 20px;
+    }
+     .form__label {
+         position: absolute;
+         top: 0;
+         display: block;
+         transition: 0.2s;
+         font-size: 1rem;
+         color: #9b9b9b;
+    }
+     .form__field:focus {
+         padding-bottom: 6px;
+         font-weight: 700;
+         border-width: 3px;
+         border-image: linear-gradient(to right, #11998e, #38ef7d);
+         border-image-slice: 1;
+    }
+     .form__field:focus ~ .form__label {
+         position: absolute;
+         top: 0;
+         display: block;
+         transition: 0.2s;
+         font-size: 1rem;
+         color: #11998e;
+         font-weight: 700;
+    }
+    /* reset input */
+     .form__field:required, .form__field:invalid {
+         box-shadow: none;
+    }
+    /* demo */
+     body {
+         font-family: 'Poppins', sans-serif;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         min-height: 100vh;
+         font-size: 1.5rem;
+         background-color: #222;
+    }
+     
+    
+    
+    
+    
+    
+    </style>
+
+
+
+<h2>Consulter Note avec le produit et le client </h2>
+
+<!-- Client numero 2 et produit numero 18 -->
+<!-- <select [(ngModel)]="model">
+    <option *ngFor="let item of list" [value]="item">{{item}}</option>
+</select> -->
+<button class="btn btn-success" (click)="getAllNoteByClientProduit(18,2)"></button>
+
+
+<div *ngFor="let note of NoteList">
+
+{{note.idNote}}
+
+{{note.coommentaire}}
+
+
+</div>
+
+
+<h2>Consulter Note avec le client </h2>
+
+<!-- <select [(ngModel)]="model">
+    <option *ngFor="let item of list" [value]="item">{{item}}</option>
+</select> -->
+
+[(ngModel)]="binding"
+
+<!-- <div class="form__group field">
+    Client : :<input type="text" style="font-size: small;" disabled [(ngModel)]="idClientt" class="form__field" placeholder="Name">    
+  </div> -->
+
+<button class="btn btn-primary" (click)="getAllNoteByClient(2)"></button>
+
+
+<div *ngFor="let note of NoteListC">
+
+{{note.idNote}}
+{{note.noote}}
+{{note.coommentaire}}
+{{note.dateNote}}
+
+
+</div>

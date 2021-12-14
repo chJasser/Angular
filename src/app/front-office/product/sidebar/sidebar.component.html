@@ -5,11 +5,75 @@
       <div class="search-hotel" style="margin-left: 3rem;">
          <h3 class="agileits-sear-head">Chercher par libelle..</h3>
          
-            <input type="search" [(ngModel)]="libelle" #it="ngModel"  (keyup)="getProductBylibelle(libelle)" placeholder="Product libelle..." name="search" required="">         
-            <i class="fas fa-search"  style="margin-left: 1rem;" (click)="getProductBylibelle(libelle)"></i>
+<!--             <input type="search" [(ngModel)]="libelle" #it="ngModel"  (keyup)="getProductBylibelle(libelle)" placeholder="Product libelle..." name="search" required="">         
+ -->    
+ 
+ 
+ 
+ 
+ <input
+   matInput
+   type="search"
+   value=""
+   #p
+   (keyup)="search(p.value, date1.value, date2.value,slider.value)"
+   placeholder="search"
+ />
+
+ PrixUnitaire:
+ 
+ Min: {{minValue}}
+ <mat-slider
+                class="w-100"
+                thumbLabel
+                tickInterval="1000"
+                step="20"
+                [min]="minValue"
+                #slider
+                [max]="maxValue"
+                (change)="
+                search(p.value, date1.value, date2.value, slider.value)
+                "
+                aria-label="units"
+                
+              >
+              <div style="text-align:right;">
+               Max: {{maxValue}}
+               </div>
+
+            </mat-slider>
+
+
+              <div class="col-md-6 px-2">
+               <mat-form-field class="w-100" appearance="fill">
+                 <mat-label>Date de début:</mat-label>
+                 <input
+                   matInput
+                   type="date"
+                   (change)="search(p.value, date1.value, date2.value,slider.value)"
+                   #date1
+                 />
+               </mat-form-field>
+             </div>
+
+
+             <div class="col-md-6 px-2">
+               <mat-form-field class="w-100" appearance="fill">
+                 <mat-label>Date de fin:</mat-label>
+                 <input
+                   matInput
+                   type="date"
+                   (change)="search(p.value, date1.value,date2.value,slider.value)"
+                   #date2
+                 />
+               </mat-form-field>
+             </div>
+
+ 
+ <!--    <i class="fas fa-search"  style="margin-left: 1rem;" (click)="getProductBylibelle(libelle)"></i> -->
       </div>
  <!-- price range -->
- <div class="range" style="margin-top: 3rem;" >
+<!--  <div class="range" style="margin-top: 3rem;" >
    <h3 class="agileits-sear-head" style="margin-left: 2rem;font-weight: bold;">Prix unitaire:</h3>
    <div style="margin: 1.5rem;">
       <div style="margin-right: 1.5rem;">{{prix}}</div> 
@@ -18,7 +82,8 @@
      <li>
 <div>
         
-   <div>Min: {{minValue}}<input type="range" [(ngModel)]="prix" [value]="prix" #it1="ngModel" name="price" [min]="minValue" [max]="maxValue">
+   <div>Min: {{minValue}}
+      <input type="range" [(ngModel)]="prix" [value]="prix" #it1="ngModel" name="price" [min]="minValue" [max]="maxValue"/>
    </div>
    <div style="text-align:right;">
       Max: {{maxValue}}
@@ -28,7 +93,7 @@
 
      </li>
    </ul>
- </div>
+ </div> -->
  <!-- //price range -->
      <!--preference -->
 <style>
@@ -36,10 +101,10 @@
 
 </style>
 
-
+<!-- 
      <div class="left-side" style="margin-top: 3rem;margin-left: 3rem;">
       <h3 class="agileits-sear-head" style="font-weight: bold;">Catégorie:</h3>
-     <select name="category" id="category" style="background-color:sandybrown; color:whitesmoke;width: 200px;"[(ngModel)]="categorie" (keyup)="getproduitsBycat(categorie)">
+     <select name="category" id="category" style="background-color:sandybrown; color:whitesmoke;width: 200px;"[(ngModel)]="categorie">
       <option value="Electromenager" selected>Electromenager</option>
       <option value="Alimentaire">Alimentaire</option>
       <option value="Quincaillerie">Quincaillerie</option>
@@ -48,7 +113,7 @@
 
     <i class="fas fa-search" (click)="getproduitsBycat(categorie)"></i>
 
-    </div>
+    </div> -->
 
 
 
