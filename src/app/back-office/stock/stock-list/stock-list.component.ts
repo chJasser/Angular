@@ -146,11 +146,10 @@ export class StockListComponent implements OnInit {
         this.my_Stock.forEach((item) => {
           this.stockService.calculStock(item.idStock).subscribe((res) => {
             this.getAllStocks();
-            
+
           });
         });
         this.toastr.success(
-
           'vous avez affecter ' + this.productIdList.length + 'produit(s)',
           'Gestion Stock'
         );

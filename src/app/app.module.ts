@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 
 import { authInterceptorProviders } from '../helpers/AuthInterceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {ToastrModule} from "ngx-toastr"
+import {ToastrModule} from "ngx-toastr";
 
 
 @NgModule({
@@ -29,8 +29,7 @@ import {ToastrModule} from "ngx-toastr"
       progressBar:true,
       progressAnimation:'increasing',
       preventDuplicates:true
-    })
-
+    }),
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

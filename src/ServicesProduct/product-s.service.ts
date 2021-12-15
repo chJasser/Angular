@@ -5,20 +5,18 @@ import { CategorieProduit } from 'src/Model/CategorieProduit';
 import { Produit } from '../Model/Produit';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProduitSService {
-
-  constructor(private HS:HttpClient) { }
+  constructor(private HS: HttpClient) {}
   private url = 'http://localhost:8089/SpringMVC/produit/';
-
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
     }),
   };
-     delete(myObject: number): Observable<Produit> {
+  delete(myObject: number): Observable<Produit> {
     const id = typeof myObject === 'number' ? myObject : myObject;
     return this.HS.delete<Produit>(
       'http://localhost:8089/SpringMVC/produit/remove-produit' + '/' + id
@@ -45,27 +43,45 @@ export class ProduitSService {
     return this.HS.get<Produit>(this.url + 'get-Max');
   }
 
-
   getProductByCategory(category: CategorieProduit): Observable<Produit[]> {
-    return this.HS.get<Produit[]>(this.url + 'retrieve-all-produits1/' + category);
+    return this.HS.get<Produit[]>(
+      this.url + 'retrieve-all-produits1/' + category
+    );
   }
 
   getProductByprixbetween(prix: any): Observable<Produit[]> {
     return this.HS.get<Produit[]>(this.url + 'retrieve-all-produits2/' + prix);
   }
 
-  addProduct(produit: Produit,idStock:number,idRayon:number): Observable<Produit> {
-
-    return this.HS.post<Produit>(this.url + 'add-produit/'+idStock+'/'+idRayon, produit, this.httpOptions);
+  addProduct(
+    produit: Produit,
+    idStock: number,
+    idRayon: number
+  ): Observable<Produit> {
+    return this.HS.post<Produit>(
+      this.url + 'add-produit/' + idStock + '/' + idRayon,
+      produit,
+      this.httpOptions
+    );
   }
 
-  updateProduct(produit: Produit,id:number): Observable<Produit> {
-    return this.HS.put<Produit>(this.url + 'modify-produit/'+id,produit,this.httpOptions);
+  updateProduct(produit: Produit, id: number): Observable<Produit> {
+    return this.HS.put<Produit>(
+      this.url + 'modify-produit/' + id,
+      produit,
+      this.httpOptions
+    );
   }
 
+  getProductNotAvInStock(stockId: bigint): Observable<Produit[]> {
+    return this.HS.get<Produit[]>(
+      this.url + 'retrieve-notstock-produits/' + stockId
+    );
+  }
 
-
-  getProductNotAvInStock(stockId:bigint): Observable<Produit[]> {
-    return this.HS.get<Produit[]>(this.url + 'retrieve-notstock-produits/'+stockId);
+  getProductNotAvInRayon(stockId: bigint): Observable<Produit[]> {
+    return this.HS.get<Produit[]>(
+      this.url + 'retrieve-notrayon-produits/' + stockId
+    );
   }
 }
