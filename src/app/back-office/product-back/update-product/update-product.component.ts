@@ -106,7 +106,7 @@ console.log(this.selectedProduct);
     console.log(this.myProduct);
     this.ps.updateProduct(this.myProduct,this.Product.get('id').value).subscribe((res) => {
       console.log('Product updated!' + res);
-      this.router.navigate(['/back']);
+      this.router.navigate(['/back/product']);
     });
   }
 

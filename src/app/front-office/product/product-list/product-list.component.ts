@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NoteService } from 'src/app/back-office/product-back/NoteService/note.service';
+import { NoteService } from 'src/app/back-office/note/NoteService/note.service';
 import { RayonService } from 'src/app/back-office/rayon/rayon.service';
 import { StockService } from 'src/app/back-office/stock/stock.service';
 import { CategorieProduit } from 'src/Model/CategorieProduit';

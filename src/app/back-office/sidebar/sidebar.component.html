@@ -25,7 +25,7 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->       
              <li  class="nav-item ml-1">
-              <a  [routerLink]="['/back']" class="nav-link">
+              <a  [routerLink]="['/back/product']" class="nav-link">
                 <i class="fas fa-apple-alt"></i>
                 <p>
                   Produit
@@ -36,7 +36,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a [routerLink]="['/back/getRevenubrut']" class="nav-link">
+                <a [routerLink]="['/back/product/getRevenubrut']" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Get revenu brut </p>
                 </a>
@@ -50,6 +50,14 @@
             </ul>
        </li>
              <li  class="nav-item ml-1">
+              <li  class="nav-item ml-2">
+                <a [routerLink]="['/back/user/addadmin']" class="nav-link">
+                  <i class="fas fa-road"></i>
+                  <p>
+                    Users 
+                  </p>
+                </a>
+              </li>
         <li  class="nav-item ml-2">
           <a [routerLink]="['/back/stock']" class="nav-link">
             <i class="fas fa-cubes"></i>

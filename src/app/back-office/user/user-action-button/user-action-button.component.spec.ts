@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConsulterNoteComponent } from './consulter-note.component';
+import { UserActionButtonComponent } from './user-action-button.component';
 
-describe('ConsulterNoteComponent', () => {
-  let component: ConsulterNoteComponent;
-  let fixture: ComponentFixture<ConsulterNoteComponent>;
+describe('UserActionButtonComponent', () => {
+  let component: UserActionButtonComponent;
+  let fixture: ComponentFixture<UserActionButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConsulterNoteComponent ]
+      declarations: [ UserActionButtonComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ConsulterNoteComponent);
+    fixture = TestBed.createComponent(UserActionButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

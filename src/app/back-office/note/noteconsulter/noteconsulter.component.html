@@ -141,18 +141,16 @@
     <option *ngFor="let item of list" [value]="item">{{item}}</option>
 </select> -->
 
-[(ngModel)]="binding"
-
-<!-- <div class="form__group field">
-    Client : :<input type="text" style="font-size: small;" disabled [(ngModel)]="idClientt" class="form__field" placeholder="Name">    
-  </div> -->
+<div class="form__group field" #ida>
+    Client : :<input style="font-size: small;" #a class="form__field" placeholder="Name">    
+  </div>  
 
 <button class="btn btn-primary" (click)="getAllNoteByClient(2)"></button>
 
 
 <div *ngFor="let note of NoteListC">
 
-{{note.idNote}}
+{{note.idNote }}
 {{note.noote}}
 {{note.coommentaire}}
 {{note.dateNote}}

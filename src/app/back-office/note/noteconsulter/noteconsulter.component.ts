@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Note } from 'src/Model/Note';
 import { Produit } from 'src/Model/Produit';
-import { NoteService } from '../../NoteService/note.service';
+import { NoteService } from '../NoteService/note.service';
 
 @Component({
   selector: 'app-consulter-note',
-  templateUrl: './consulter-note.component.html',
-  styleUrls: ['./consulter-note.component.css']
+  templateUrl: './noteconsulter.component.html',
+  styleUrls: ['./noteconsulter.component.css']
 })
 export class ConsulterNoteComponent implements OnInit {
 

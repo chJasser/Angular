@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { BodyComponent } from './body/body.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -32,6 +33,7 @@ import {MatMenuModule} from '@angular/material/menu';
     ReactiveFormsModule,
     FormsModule,
     MatMenuModule,
+    NgxPaginationModule
 
 
   ]

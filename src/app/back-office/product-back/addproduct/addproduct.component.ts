@@ -202,7 +202,7 @@ this.detailProduit=new detailProduit(this.Product.get('category').value)
       
     });
 
-    this.router.navigate(['/back']);
+    this.router.navigate(['/back/product']);
   
     
   } 

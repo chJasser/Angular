@@ -11,7 +11,6 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { DetailProductBackComponent } from './detail-product-back/detail-product-back.component';
 import { AssignProductTorayonComponent } from './assign-product-torayon/assign-product-torayon.component';
-import { ConsulterNoteComponent } from './Note/consulter-note/consulter-note.component';
 import { RevenuBrutComponent } from './revenu-brut/revenu-brut.component';
 
 @NgModule({
@@ -22,7 +21,6 @@ import { RevenuBrutComponent } from './revenu-brut/revenu-brut.component';
     UpdateProductComponent,
     DetailProductBackComponent,
     AssignProductTorayonComponent,
-    ConsulterNoteComponent,
     RevenuBrutComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
