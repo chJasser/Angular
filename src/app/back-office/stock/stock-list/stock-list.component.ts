@@ -6,6 +6,7 @@ import { ProduitSService } from 'src/ServicesProduct/product-s.service';
 import { Produit } from 'src/Model/Produit';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-stock-list',
   templateUrl: './stock-list.component.html',
@@ -137,7 +138,7 @@ export class StockListComponent implements OnInit {
     this.productIdList = this.productIdList.filter(function (item) {
       return item !== i;
     });
-    console.log(this.productIdList);
+
   }
   assignProductListToStock() {
     this.stockService
@@ -146,9 +147,11 @@ export class StockListComponent implements OnInit {
         this.my_Stock.forEach((item) => {
           this.stockService.calculStock(item.idStock).subscribe((res) => {
             this.getAllStocks();
+            this. productIdList=[]
 
           });
         });
+        console.log('ssssssssss')
         this.toastr.success(
           'vous avez affecter ' + this.productIdList.length + 'produit(s)',
           'Gestion Stock'

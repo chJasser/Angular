@@ -1,11 +1,28 @@
-<div class="grid_meta">
-    <div class="product_price">
-       <h4>
 
-       </h4>
-       <div class="grid-price mt-2">
-       {{prixUnitaire}}
-       </div>
-    </div>
+<section class="contact py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container-fluid py-lg-5 py-md-4 py-sm-4 py-3">
+       <h3 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3" style="font-weight: bold;">Details du produit</h3>
+       <div class="row">
+         <div class="side-bar col-lg-3">
+          
+         </div>
+<div
+class="card"
+>
+<div class="text-right mr-2 mt-2">
 
-</div>    
+<i [routerLink]="['/home/product']" class="fas fa-backspace mb-2 mx-auto" style="font-size: 2rem;cursor: pointer;color:#A9A9A9;"></i>
+
+</div>
+<div style="margin-top: -1.5rem;" class="card-body">
+
+  <h6 style="font-weight: 600">Libelle : {{ p.libelle }}</h6>
+  <h6 style="font-weight: 600">Code : {{ p.code }}</h6>
+  <h6 style="font-weight: 600">Prix unitaire : {{ p.prixUnitaire }}</h6>
+  <h6 ngClass style="font-weight: 600">Catégorie du produit : {{p.detailProduit.categorieProduit }}</h6>
+  </div>
+</div>
+
+</div>
+</div>
+</section>

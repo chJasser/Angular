@@ -156,6 +156,7 @@ export class RayonListComponent implements OnInit {
         this.rayon_list.forEach((item) => {
           this.rayonService.calculQte(item.idRayon).subscribe((res) => {
             this.getAllRayons();
+            this.productIdList = [];
           });
         });
         this.toastr.success(

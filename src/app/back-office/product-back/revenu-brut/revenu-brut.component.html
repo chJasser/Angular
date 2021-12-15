@@ -1,0 +1,31 @@
+
+
+<div style="text-align: center;">
+<div class="col-md-6 px-2">
+  <mat-form-field class="w-100" appearance="fill">
+    <mat-label>Date de début: </mat-label>
+    <input
+      matInput
+      type="date"
+      #date1
+    />
+  </mat-form-field>
+</div>
+<div class="col-md-6 px-2">
+  <mat-form-field class="w-100" appearance="fill">
+    <mat-label>Date de fin: </mat-label>
+    <input
+      matInput
+      type="date"
+      #date2
+    />
+  </mat-form-field>
+</div>
+</div>
+<div style="text-align: center;margin-top: 2rem;margin-left: 12rem;" class="col-md-6 px-2">
+<button type="submit" class="btn btn-outline-warning" (click)="getRevenuBrut(date1.value,date2.value)">Calculer
+    <i class="fas fa-calculator"></i>
+</button>
+
+{{revenu}}</div>
+

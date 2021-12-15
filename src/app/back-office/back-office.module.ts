@@ -11,6 +11,13 @@ import { FooterComponent } from './footer/footer.component';
 import { BodyComponent } from './body/body.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 
+import {MatMenuModule} from '@angular/material/menu';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -27,7 +34,8 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-
-  ]
+    MatMenuModule,
+    NgxPaginationModule
+ ]
 })
 export class BackOfficeModule { }

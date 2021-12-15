@@ -20,6 +20,9 @@
             <a class="nav-link disabled ml-auto" *ngIf="isLoggedIn" href="#" tabindex="-1" aria-disabled="true">{{ username }}</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link  ml-auto" *ngIf="showAdminBoard"  routerLink="back/user/addadmin" href="#" tabindex="-1" aria-disabled="true"> Dashboard </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#" *ngIf="isLoggedIn" (click)="logout()">Log Out</a>
           </li>
         </ul>
