@@ -116,44 +116,84 @@
 
 
 
-<h2>Consulter Note avec le produit et le client </h2>
+<h2>Consulter Note avec le produit et le client :</h2>
 
 <!-- Client numero 2 et produit numero 18 -->
 <!-- <select [(ngModel)]="model">
     <option *ngFor="let item of list" [value]="item">{{item}}</option>
 </select> -->
-<button class="btn btn-success" (click)="getAllNoteByClientProduit(18,2)"></button>
 
 
-<div *ngFor="let note of NoteList">
+<div class="form__group field" #ida>
+  Id Client :<input type="number" style="font-size: small;" class="form__field" [(ngModel)]="salut">    
+</div>
 
-{{note.idNote}}
 
+
+<div class="form__group field" #ida>
+  Id Produit :<input type="number" style="font-size: small;" class="form__field" [(ngModel)]="prodd">    
+</div>
+
+<br>
+<button class="btn btn-success" (click)="odhher()"  (click)="getAllNoteByClientProduit(prodd,salut) ">Consulter</button>
+
+<div *ngIf="aaa">
+<div *ngFor="let note of NoteList" >
+
+<div class="card-body">
+  <img [src]="retrievedImagetab[ppr.idProduit]" alt="...">
+
+  <h5 style="font-weight: 900;font-size:1rem;float: center;" class="card-title">
+{{note.idNote }}
+</h5>
+<h6 style="font-weight: 700" class="card-text">
+{{note.noote}}
+</h6>
+<h6 style="font-weight: 700" class="card-text">
 {{note.coommentaire}}
+</h6>
+<h6 style="font-weight: 700" class="card-text">
+{{note.dateNote}}
+</h6>
+
+<h6 style="font-weight: 700" class="card-text">
+  libelle du produit :{{ppr.libelle}}
+</h6>
+<h6 style="font-weight: 700" class="card-text">
+  Code  du produit :{{ppr.code}}
+</h6>
+
 
 
 </div>
 
 
+</div>
+</div>
+
 <h2>Consulter Note avec le client </h2>
 
-<!-- <select [(ngModel)]="model">
-    <option *ngFor="let item of list" [value]="item">{{item}}</option>
-</select> -->
-
 <div class="form__group field" #ida>
-    Client : :<input style="font-size: small;" #a class="form__field" placeholder="Name">    
+  Id Client  :<input type="number" style="font-size: small;" class="form__field" [(ngModel)]="salut">    
   </div>  
-
-<button class="btn btn-primary" (click)="getAllNoteByClient(2)"></button>
+  <br>
+<button class="btn btn-primary" (click)="getAllNoteByClient(salut)">Consulter</button>
 
 
 <div *ngFor="let note of NoteListC">
-
-{{note.idNote }}
-{{note.noote}}
-{{note.coommentaire}}
-{{note.dateNote}}
-
+  <div class="card-body">
+    <h5 style="font-weight: 900;font-size:1rem;float: center;" class="card-title">
+Numéro de la note :{{note.idNote }}
+</h5>
+<h6 style="font-weight: 700" class="card-text">
+Note :{{note.noote }}/10
+</h6>
+<h6 style="font-weight: 700" class="card-text">
+Commentaire :{{note.coommentaire}}
+</h6>
+<h6 style="font-weight: 700" class="card-text">
+Note attribué le :{{note.dateNote}}
+</h6>
+</div>
 
 </div>

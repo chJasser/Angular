@@ -1,14 +1,18 @@
+import { CategorieProduit } from "./CategorieProduit";
+
 export class SearchProduit {
-    libelle: string;
+    query?: string;
     prixUnitaire?:any
-    d1?: Date;
-    d2?: Date;
+    dateDebut?: Date;
+    dateFin?: Date;
+    categorie?:CategorieProduit;
   
-    constructor(libelle,d1,d2,prixUnitaire) {
-this.libelle=libelle;
-this.d1=d1;
-this.d2=d2;
-this.prixUnitaire=prixUnitaire;
+    constructor(libelle1,d11,d22,prixUnitairee,categoriee) {
+this.query=libelle1;
+this.dateDebut=d11;
+this.dateFin=d22;
+this.prixUnitaire=prixUnitairee;
+        this.categorie=categoriee;
     }
   }
   

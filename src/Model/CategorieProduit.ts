@@ -1,5 +1,5 @@
 export enum CategorieProduit{
 
-    Electromenager, Alimentaire, Quicaillerie
+    Electromenager, Alimentaire, Quincaillerie
   
     }

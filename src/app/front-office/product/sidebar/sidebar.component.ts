@@ -57,13 +57,14 @@ console.log(this.minValue)
 
 
   SearchProduit1:SearchProduit;
-search(p:any, d1:any, d2:any,prixUnitaire:any){
+search(p:any, d1:any, d2:any,prixUnitaire:any,categorie:any){
   console.log(p);
   console.log(d1);
   console.log(d2);
   console.log(prixUnitaire);
+  console.log(categorie);
   
-  this.SearchProduit1 = new SearchProduit(p, d1, d2,prixUnitaire);
+  this.SearchProduit1 = new SearchProduit(p, d1, d2,prixUnitaire,categorie);
   this.produitsearch.emit(this.SearchProduit1)
 }
 

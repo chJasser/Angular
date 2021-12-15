@@ -16,7 +16,7 @@
    type="search"
    value=""
    #p
-   (keyup)="search(p.value, date1.value, date2.value,slider.value)"
+   (keyup)="search(p.value,date1.value, date2.value,slider.value,categoriess.value)"
    placeholder="search"
  />
 
@@ -32,7 +32,7 @@
                 #slider
                 [max]="maxValue"
                 (change)="
-                search(p.value, date1.value, date2.value, slider.value)
+                search(p.value, date1.value, date2.value, slider.value,categoriess.value)
                 "
                 aria-label="units"
                 
@@ -50,7 +50,7 @@
                  <input
                    matInput
                    type="date"
-                   (change)="search(p.value, date1.value, date2.value,slider.value)"
+                   (change)="search(p.value, date1.value, date2.value,slider.value,categoriess.value)"
                    #date1
                  />
                </mat-form-field>
@@ -63,7 +63,7 @@
                  <input
                    matInput
                    type="date"
-                   (change)="search(p.value, date1.value,date2.value,slider.value)"
+                   (change)="search(p.value, date1.value,date2.value,slider.value,categoriess.value)"
                    #date2
                  />
                </mat-form-field>
@@ -101,19 +101,18 @@
 
 </style>
 
-<!-- 
+
      <div class="left-side" style="margin-top: 3rem;margin-left: 3rem;">
       <h3 class="agileits-sear-head" style="font-weight: bold;">Catégorie:</h3>
-     <select name="category" id="category" style="background-color:sandybrown; color:whitesmoke;width: 200px;"[(ngModel)]="categorie">
-      <option value="Electromenager" selected>Electromenager</option>
+     <select name="category" id="category" value="" #categoriess style="background-color:sandybrown; color:whitesmoke;width: 200px;"  (change)="search(p.value, date1.value,date2.value,slider.value,categoriess.value)">
+      
+      <option value="Electromenager">Electromenager</option>
       <option value="Alimentaire">Alimentaire</option>
       <option value="Quincaillerie">Quincaillerie</option>
   
     </select>
 
-    <i class="fas fa-search" (click)="getproduitsBycat(categorie)"></i>
-
-    </div> -->
+    </div> 
 
 
 
@@ -225,4 +224,3 @@
         </ul>
      </div>
 
-     <button type="button" style="background-color: darkgoldenrod;text-align: right;margin-left: 10rem;">Filtrer </button>

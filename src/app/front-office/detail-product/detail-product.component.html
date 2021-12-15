@@ -14,7 +14,9 @@ class="card"
 <i [routerLink]="['/home/product']" class="fas fa-backspace mb-2 mx-auto" style="font-size: 2rem;cursor: pointer;color:#A9A9A9;"></i>
 
 </div>
-<div style="margin-top: -1.5rem;" class="card-body">
+<div style="margin-top: -1.5rem;text-align: center;" class="card-body">
+  <img [src]="retrievedImagetab[p.idProduit]" class="img-thumbnail img-fluid" alt="">
+
 
   <h6 style="font-weight: 600">Libelle : {{ p.libelle }}</h6>
   <h6 style="font-weight: 600">Code : {{ p.code }}</h6>

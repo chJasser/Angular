@@ -77,15 +77,22 @@ affecterNote(idProduit:number,noote:any){
 this.ns.addNote(n,idProduit).subscribe(); */
 
 }
+
+averagee(idaa:number){
+  console.log(idaa);
+  this.ns.average(idaa).subscribe((res)=>{this.average=res;
+  console.log(this.averageee);})
+}
 Ajouternote(Commentaire:String){
   console.log(Commentaire);
- this.nn=new Note("salut",1,null,null,this.pNote)
+ //this.nn=new Note("salut",1,null,null,this.pNote)
 console.log(this.nn);
 this.ns.addNote(Commentaire,this.note,this.pNote.idProduit).subscribe();
-/* this.averagee(this.pNote.idProduit)
 
+ this.averagee(this.pNote.idProduit)
 this.pNote.NoteMoyenne=this.averageee;
-console.log(this.averageee); */
+console.log(this.averageee); 
+
   this.ppp=this.ListProduct.find(x => x.idProduit === 1);
 console.log(this.ppp.NoteMoyenne)
 this.ps.updateProduct(this.pNote,this.pNote.idProduit).subscribe((res)=>{this.ProduitModifie=res;console.log(this.ProduitModifie)});
@@ -94,11 +101,7 @@ this.ps.updateProduct(this.pNote,this.pNote.idProduit).subscribe((res)=>{this.Pr
 
 
 
-averagee(idaa:number){
-  console.log(idaa);
-  this.ns.average(idaa).subscribe((res)=>{this.average=res;
-  console.log(this.averageee);})
-}
+
 
 
 /*   this.route.queryParams.subscribe((params:any)=> {
@@ -172,6 +175,7 @@ averagee(idaa:number){
     console.log(SearchProduit1);
     this.ps.Recherche(SearchProduit1).subscribe((res) => {
       this.ListProduct= res;
+      console.log(this.ListProduct);
     });
   }
 

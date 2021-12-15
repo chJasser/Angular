@@ -30,9 +30,9 @@
                               <div class="grid_meta">
                                 
                                  <div class="product_price">
-                                   
+                                    {{p.NoteMoyenne}}
                                     <h4>
-                                       {{p.NoteMoyenne}}
+                                    
                                        <a href="single.html">{{p.libelle}}</a>
                                                           
                                     </h4>
@@ -47,11 +47,13 @@
                                     <li>
                                        <a  data-bs-toggle="modal" data-bs-target="#staticBackdrop" [routerLink]="['/home/product']" routerLinkActive="router-link-active"  (click)="affecterNote(p.idProduit,1)">
                                        <i class="fas fa-star"></i>
+                                     
                                        </a>
                                     </li>
                                     <li>
                                        <a  data-bs-toggle="modal" data-bs-target="#staticBackdrop" [routerLink]="['/home/product']" routerLinkActive="router-link-active"  (click)="affecterNote(p.idProduit,2)">
                                        <i class="fas fa-star"></i>
+                                      
                                        </a>
                                     </li>
                                     <li>
@@ -66,9 +68,36 @@
                                     </li>
                                     <li>
                                        <a  data-bs-toggle="modal" data-bs-target="#staticBackdrop" [routerLink]="['/home/product']" routerLinkActive="router-link-active"  (click)="affecterNote(p.idProduit,5)">
-                                       <i class="far fa-star-half-o"></i>
+                                          <i class="fas fa-star" ></i>
                                        </a>
                                     </li>
+                                    <li>
+                                       <a  data-bs-toggle="modal" data-bs-target="#staticBackdrop" [routerLink]="['/home/product']" routerLinkActive="router-link-active"  (click)="affecterNote(p.idProduit,6)">
+                                          <i class="fas fa-star" ></i>
+                                       </a>
+                                    </li>
+                                    <li>
+                                       <a  data-bs-toggle="modal" data-bs-target="#staticBackdrop" [routerLink]="['/home/product']" routerLinkActive="router-link-active"  (click)="affecterNote(p.idProduit,7)">
+                                          <i class="fas fa-star" ></i>
+                                       </a>
+                                    </li>
+                                    <li>
+                                       <a  data-bs-toggle="modal" data-bs-target="#staticBackdrop" [routerLink]="['/home/product']" routerLinkActive="router-link-active"  (click)="affecterNote(p.idProduit,8)">
+                                          <i class="fas fa-star" ></i>
+                                       </a>
+                                    </li>
+                                    <li>
+                                       <a  data-bs-toggle="modal" data-bs-target="#staticBackdrop" [routerLink]="['/home/product']" routerLinkActive="router-link-active"  (click)="affecterNote(p.idProduit,9)">
+                                          <i class="fas fa-star" ></i>
+                                       </a>
+                                    </li>
+                                    <li>
+                                       <a  data-bs-toggle="modal" data-bs-target="#staticBackdrop" [routerLink]="['/home/product']" routerLinkActive="router-link-active"  (click)="affecterNote(p.idProduit,10)">
+                                          <i class="fas fa-star" ></i>
+                                       </a>
+                                    </li>
+                                 
+                              
                                  </ul>
                               </div>
                               <div class="toys single-item hvr-outline-out">

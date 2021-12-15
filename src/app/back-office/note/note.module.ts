@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { NoteRoutingModule } from './note-routing.module';
 import { ConsulterNoteComponent } from './noteconsulter/noteconsulter.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -12,7 +13,9 @@ import { ConsulterNoteComponent } from './noteconsulter/noteconsulter.component'
   ],
   imports: [
     CommonModule,
-    NoteRoutingModule
+    NoteRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class NoteModule { }
