@@ -1,3 +1,4 @@
+import { SearchStock } from './../../../Model/SerachStock';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -42,10 +43,74 @@ export class StockService {
       this.httpOptions
     );
   }
-  search(s: string): Observable<Stock[]> {
-    return this.HS.get<Stock[]>(
-      this.url + 'search-stock/' + s ,
+  search(searchStock: SearchStock): Observable<Stock[]> {
+    console.log(searchStock);
+
+    return this.HS.post<Stock[]>(
+      this.url + 'search-stock',
+      searchStock,
       this.httpOptions
     );
+  }
+
+  getStockByCreatedDateDesc(): Observable<Stock[]> {
+    return this.HS.get<Stock[]>(
+      this.url + 'stock-createdAt-Desc',
+      this.httpOptions
+    );
+  }
+
+  getStockByCreatedDateAsc(): Observable<Stock[]> {
+    return this.HS.get<Stock[]>(
+      this.url + 'stock-createdAt-Asc',
+      this.httpOptions
+    );
+  }
+
+  getStockByUpdatedDateDesc(): Observable<Stock[]> {
+    return this.HS.get<Stock[]>(
+      this.url + 'stock-uapdatedAt-Desc',
+      this.httpOptions
+    );
+  }
+
+  getStockByUpdatedAtDateAsc(): Observable<Stock[]> {
+    return this.HS.get<Stock[]>(
+      this.url + 'stock-uapdatedAt-Asc',
+      this.httpOptions
+    );
+  }
+
+  getStockByQteDesc(): Observable<Stock[]> {
+    return this.HS.get<Stock[]>(this.url + 'stock-qte-Desc', this.httpOptions);
+  }
+
+  getStockByQteAsc(): Observable<Stock[]> {
+    return this.HS.get<Stock[]>(this.url + 'stock-qte-Asc', this.httpOptions);
+  }
+
+  getStockByLibelleDesc(): Observable<Stock[]> {
+    return this.HS.get<Stock[]>(
+      this.url + 'stock-libelle-desc',
+      this.httpOptions
+    );
+  }
+
+  getStockByLibelleAsc(): Observable<Stock[]> {
+    return this.HS.get<Stock[]>(
+      this.url + 'stock-libelle-asc',
+      this.httpOptions
+    );
+  }
+  assignListproductToStock(stockId: bigint, listId: number[]) {
+    return this.HS.put(
+      this.url + 'assign-productlist-to-stock/' + stockId,
+      listId,
+      this.httpOptions
+    );
+  }
+
+  calculStock(stockId: bigint) {
+    return this.HS.put(this.url + 'calcul-stock/' + stockId, this.httpOptions);
   }
 }

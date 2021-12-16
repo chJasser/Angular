@@ -25,7 +25,7 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->       
              <li  class="nav-item ml-1">
-              <a  [routerLink]="['/back']" class="nav-link">
+              <a  [routerLink]="['/back/product']" class="nav-link">
                 <i class="fas fa-apple-alt"></i>
                 <p>
                   Produit
@@ -36,21 +36,15 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/mailbox/mailbox.html" class="nav-link">
+                <a [routerLink]="['/back/product/getRevenubrut']" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inbox</p>
+                  <p>Get revenu brut </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/mailbox/compose.html" class="nav-link">
+                <a [routerLink]="['/back/assginProductTorayon']" href="pages/mailbox/mailbox.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Compose</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/mailbox/read-mail.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Read</p>
+                  <p>Affecter un produit pour un rayon</p>
                 </a>
               </li>
             </ul>
@@ -84,11 +78,11 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="pages/gallery.html" class="nav-link">
+        <li  class="nav-item">
+          <a  [routerLink]="['/back/note']" class="nav-link">
             <i class="nav-icon far fa-image"></i>
             <p>
-              Gallery
+              Note
             </p>
           </a>
         </li>

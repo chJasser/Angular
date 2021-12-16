@@ -37,7 +37,14 @@ const routes: Routes = [
           import('./rayon/rayon.module').then(
             (m) => m.RayonModule
           ),
-      },
+          
+      },{
+      path:'note',
+      loadChildren: () =>
+          import('./note/note.module').then(
+            (m) => m.NoteModule
+          ),
+    } 
     ],
   },
 ];

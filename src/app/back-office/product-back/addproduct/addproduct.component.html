@@ -135,7 +135,7 @@
     <select name="category" id="category"   formControlName="category">
         <option value="">Electromenager</option>
         <option value="Alimentaire">Alimentaire</option>
-        <option value="Quicaillerie">Quicaillerie</option>
+        <option value="Quincaillerie">Quincaillerie</option>
     
     </select>
 
@@ -189,6 +189,77 @@
 }
 
 
+.form__group {
+	 position: relative;
+	 padding: 15px 0 0;
+	 margin-top: 10px;
+	 width: 50%;
+}
+ .form__field {
+	 font-family: inherit;
+	 width: 100%;
+	 border: 0;
+	 border-bottom: 2px solid #9b9b9b;
+	 outline: 0;
+	 font-size: 1.3rem;
+	 color: black;
+	 padding: 7px 0;
+	 background: transparent;
+	 transition: border-color 0.2s;
+}
+ .form__field::placeholder {
+	 color: transparent;
+}
+ .form__field:placeholder-shown ~ .form__label {
+	 font-size: 1.3rem;
+	 cursor: text;
+	 top: 20px;
+}
+ .form__label {
+	 position: absolute;
+	 top: 0;
+	 display: block;
+	 transition: 0.2s;
+	 font-size: 1rem;
+	 color: #9b9b9b;
+}
+ .form__field:focus {
+	 padding-bottom: 6px;
+	 font-weight: 700;
+	 border-width: 3px;
+	 border-image: linear-gradient(to right, #11998e, #38ef7d);
+	 border-image-slice: 1;
+}
+ .form__field:focus ~ .form__label {
+	 position: absolute;
+	 top: 0;
+	 display: block;
+	 transition: 0.2s;
+	 font-size: 1rem;
+	 color: #11998e;
+	 font-weight: 700;
+}
+/* reset input */
+ .form__field:required, .form__field:invalid {
+	 box-shadow: none;
+}
+/* demo */
+ body {
+	 font-family: 'Poppins', sans-serif;
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: center;
+	 align-items: center;
+	 min-height: 100vh;
+	 font-size: 1.5rem;
+	 background-color: #222;
+}
+ 
+
+
+
+
+
 </style>
 
 <br>
@@ -198,13 +269,18 @@
     <section >
 
       <label for="pet-select" style="margin-left: 1.5rem;">Stock du produit</label>>
+      
       <div class="final__dropdown">
-        <button class="final__dropdown__hover">Stock</button>
+        <button type="button" class="final__dropdown__hover">Stock</button>
         <div class="final__dropdown__menu">
-          <button type="button" style="width:150px;color:beige;background-color: chocolate;display: flex;"    *ngFor="let s of ListStock;let i=index" value="s.libelleStock"  (click)="sa(i)" (click)="getId(s.idStock)">{{s.libelleStock}}</button>
+          <button type="button" style="width:150px;color:beige;background-color: chocolate;display: flex;"    *ngFor="let s of ListStock;let i=index" value="s.libelleStock"  (click)="getLibelle(s.libelleStock)" (click)="getId(s.idStock)">{{s.idStock}} | {{s.libelleStock}}</button> 
         </div>
       </div>
-
+      <div class="form__group field">
+        Libelle du stock:<input type="text" style="font-size: small;" disabled [value]="libelleStockChoisit" class="form__field" placeholder="Name">    
+      </div>
+    
+     <!--  <input type="text" [value]="libelleStockChoisit"> -->
     </section>
 
 
@@ -216,11 +292,13 @@
       <div class="final__dropdown">
         <button class="final__dropdown__hover">Rayon</button>
         <div class="final__dropdown__menu">
-          <button type="button" style="width:150px;color:beige;background-color: chocolate;display: flex;"    *ngFor="let r of ListRayon;let i=index" value="r.libelle"  (click)="sa1(i)" (click)="getIdRayon(r.idRayon)">{{r.libelle}}</button>
+          <button type="button" style="width:150px;color:beige;background-color: chocolate;display: flex;"    *ngFor="let r of ListRayon;let i=index" value="r.libelle"  (click)="getRayon(r.libelle)" (click)="getIdRayon(r.idRayon)">{{r.libelle}}</button>
          
         </div>
       </div>
-
+      <div class="form__group field">
+        Libelle du rayon :<input type="text" style="font-size: small;" disabled [value]="rayonChoisit" class="form__field" placeholder="Name">    
+      </div>
     </section>
 </div>
 
@@ -277,7 +355,7 @@
 </div>
  
  <div class="col-md-12 my-2">
-  <button type="submit" [disabled]="Product.invalid"   data-bs-toggle="modal" data-bs-target="#staticBackdrop"  class="btn btn-primary">Ajouter produit</button>
+  <button type="submit" (click)="test()" [disabled]="Product.invalid && voir==false "   data-bs-toggle="modal" data-bs-target="#staticBackdrop"  class="btn btn-primary">Ajouter produit</button>
   <button (click)="discardAdd()" class="btn btn-dark ml-3">Annuler</button>
     </div>
   </form>

@@ -13,6 +13,7 @@ export class Produit{
     stock?:Stock;
     detailProduit?:detailProduit;
     Image?:ImageModel;
+    NoteMoyenne?:any;
 
     constructor(code,libelle,prixunitaire,detailproduit,Image){
                 this.code=code

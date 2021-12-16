@@ -10,11 +10,13 @@ export class Stock {
   updatedAt:Date;
   checked:boolean
 
-  constructor(qteMin, libelleStock, idStock?,createdAt?,updatedAt?) {
+  constructor(qteMin, libelleStock, idStock?,createdAt?,updatedAt?,qte?,checked?) {
     this.qteMin = qteMin;
     this.libelleStock = libelleStock;
     this.idStock = idStock;
     this.createdAt=createdAt;
     this.updatedAt=updatedAt;
+    this.qte=qte;
+    this.checked=checked;
   }
 }
