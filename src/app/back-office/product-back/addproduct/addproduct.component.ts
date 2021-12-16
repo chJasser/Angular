@@ -65,7 +65,7 @@ idRayonProduit:number;
   };
 
   test(){
-    if(this.rayonChoisit!="" && this.libelleStockChoisit!="" && this.imagee==true){
+    if(this.rayonChoisit!="" && this.libelleStockChoisit!=""){
       this.voir=true;
     }
   }
