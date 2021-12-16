@@ -30,17 +30,38 @@ export class UserService {
       data => console.log(data) );
   }
 
+  
+  getHistoriqueClient(id: any): Observable<any> {
+    console.log(id);
+    return this.http.get<any>('http://localhost:8089/SpringMVC/user/getHistorique/'+ id);
+  }
 
+  modifier(user: User): Observable<any> {
+    console.log(user);
+    return this.http.put<User>('http://localhost:8089/SpringMVC/user/modify-client/',user);
+  }
+
+  getUser(id: any): Observable<any> {
+    return this.http.get('http://localhost:8089/SpringMVC/user/retrieve-user/'+id);
+  }
 
   getAll(params: any): Observable<any> {
     console.log(params);
     return this.http.get<any>('http://localhost:8089/SpringMVC/user/paginate/users', { params });
   }
+  getClientsStats(): Observable<any>{
+    return this.http.get<any>('http://localhost:8089/SpringMVC/user/getNotesByCategorieClient/');
+    }
 
 
   listUsers(): Observable<User[]>{
     return this.http.get<User[]>('http://localhost:8089/SpringMVC/user/retrieve-all-user');
     }
+
+
+
+
+
 
   getPublicContent(): Observable<any> {
     return this.http.get(API_URL + 'all', { responseType: 'text' });

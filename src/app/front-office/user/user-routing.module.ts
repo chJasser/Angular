@@ -1,3 +1,4 @@
+import { ModifierComponent } from './modifier/modifier.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -8,6 +9,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'modifier', component: ModifierComponent },
 
   /* { path: 'product', component: ProductComponent },
 { path: '', redirectTo: 'product', pathMatch: 'full' }, */

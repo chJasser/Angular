@@ -1,18 +1,43 @@
-<div class="col-md-12">
-<div class="card card-container">
+<head>
+  <!-- Required meta tags-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Colorlib Templates">
+  <meta name="author" content="Colorlib">
+  <meta name="keywords" content="Colorlib Templates">
 
-    <form
+  <!-- Title Page-->
+
+
+  <!-- Icons font CSS-->
+
+  <!-- Font special for pages-->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+
+
+  <!-- Main CSS-->
+
+</head>
+  
+ 
+
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+<div class="wrapper wrapper--w680">
+<div class="card card-4"> 
+  <div class="card-body"> 
+    <form 
       *ngIf="!isLoggedIn"
       name="form"
       (ngSubmit)="f.form.valid && onSubmit()"
       #f="ngForm"
       novalidate
     >
-      <div class="form-group">
-        <label for="username">Username</label>
+      <div class="row row-space">
+        <label class="label" for="username">Username</label>
         <input
           type="text"
-          class="form-control"
+          class="input--style-4"
           name="username"
           [(ngModel)]="form.username"
           required
@@ -27,10 +52,10 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
+        <label class="label" for="password">Password</label>
         <input
           type="password"
-          class="form-control"
+          class="input--style-4"
           name="password"
           [(ngModel)]="form.password"
           required
@@ -45,8 +70,8 @@
 
         </div>
       </div>
-      <div class="form-group">
-        <button class="btn btn-primary btn-block">
+      <div class="p-t-15">
+        <button class="btn btn--radius-2 btn--blue">
           Login
         </button>
       </div>
@@ -61,5 +86,7 @@
       </div>
     </form>
 
+    </div>
+  </div>
   </div>
 </div>

@@ -14,7 +14,10 @@ export class User {
     profession: Profession;
     roles: Role[];
 
-   constructor(idClient,nom,prenom,username,dateNaissance,email,password,categorieClient,profession,roles){
+    get id(): number {
+        return this.idClient;
+    }
+ /*  constructor(idClient,nom,prenom,username,dateNaissance,email,password,categorieClient,profession,roles){
         this.idClient = idClient ;
         this.nom = nom ;
         this.prenom = prenom ;
@@ -25,7 +28,7 @@ export class User {
         this.categorieClient = categorieClient;
         this.profession = profession ;
         this.roles = roles ;
-    }
+    } */
     
     
 
