@@ -25,7 +25,7 @@ export class AddproductComponent implements OnInit {
 
 
 
-
+  imagee:boolean=false;
 
   rayon:string
   stockk:string
@@ -65,14 +65,14 @@ idRayonProduit:number;
   };
 
   test(){
-    if(this.rayonChoisit!="" && this.libelleStockChoisit!=""){
+    if(this.rayonChoisit!="" && this.libelleStockChoisit!="" && this.imagee==true){
       this.voir=true;
     }
   }
 
   onUpload() {
     console.log(this.selectedFile);
-    
+    this.imagee=true;
     //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
     const uploadImageData = new FormData();
     uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);

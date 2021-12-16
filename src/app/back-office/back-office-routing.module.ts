@@ -3,6 +3,7 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { ChartProductComponent } from './product-back/chart-product/chart-product.component';
  
 const routes: Routes = [
  
@@ -44,7 +45,12 @@ const routes: Routes = [
           import('./note/note.module').then(
             (m) => m.NoteModule
           ),
-    } 
+    },
+    {
+      path: 'chartProduct',
+      component: ChartProductComponent,
+  
+    }
     ],
   },
 ];

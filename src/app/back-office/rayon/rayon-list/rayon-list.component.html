@@ -7,6 +7,82 @@
         class="fas fa-plus-circle mx-auto"
       ></i>
     </div>
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> Barre de recherhe</mat-panel-title>
+          <mat-panel-description>
+            {{ panelOpenState ? "" : "Cliquer ici..." }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 px-2 mt-2">
+              <form class="example-form w-100">
+                <mat-form-field
+                  class="example-full-width w-100"
+                  appearance="fill"
+                >
+                  <mat-label>Libelle ou code :</mat-label>
+                  <input
+                    matInput
+                    type="search"
+                    value=""
+                    #p
+                    (keyup)="serach(p.value, date1.value, date2.value)"
+                    placeholder="search"
+                  />
+                </mat-form-field>
+              </form>
+            </div>
+
+            <div class="col-md-6 px-2">
+              <mat-label>Nombres des produits:</mat-label>
+              <mat-slider
+                class="w-100"
+                thumbLabel
+                [displayWith]="formatLabel"
+                tickInterval="1000"
+                step="1"
+                min="0"
+                #slider
+                max="20"
+                (change)="
+                  serach(p.value, date1.value, date2.value, slider.value)
+                "
+                aria-label="units"
+              ></mat-slider>
+            </div>
+            <div class="col-md-6 px-2">
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label>Date de début</mat-label>
+                <input
+                  matInput
+                  type="date"
+                  (change)="serach(p.value, date1.value, date2.value)"
+                  #date1
+                />
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 px-2">
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label>Date de fin</mat-label>
+                <input
+                  matInput
+                  type="date"
+                  (change)="serach(p.value, date1.value, date2.value)"
+                  #date2
+                />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
   <div class="col-12">
     <app-add-rayon
@@ -21,15 +97,61 @@
       *ngIf="updateRayonStatus"
     ></app-update-rayon>
   </div>
+  <div class="col-12 mt-2">
+    <mat-card>
+      <div class="sortSection">
+        <h5 class="fw-bold sortItem">
+          Libelle :
+          <i
+            (click)="getRayonLibelletAsc()"
+            class="fas fa-sort-alpha-up-alt"
+          ></i>
+          <i
+            (click)="getRayonLibelleDesc()"
+            class="fas fa-sort-alpha-down-alt"
+          ></i>
+        </h5>
+        <h5 class="fw-bold sortItem">
+          Code :
+          <i (click)="getRayonCodetAsc()" class="fas fa-sort-alpha-up-alt"></i>
+          <i
+            (click)="getRayonCodeDesc()"
+            class="fas fa-sort-alpha-down-alt"
+          ></i>
+        </h5>
+        <h5 class="fw-bold sortItem">
+          Date creation :
+          <i (click)="getRayonCreatedAtAsc()" class="fas fa-sort-up"></i>
+          <i (click)="getRayonCreatedAtDesc()" class="fas fa-sort-down"></i>
+        </h5>
+        <h5 class="fw-bold sortItem">
+          Date modification :
+          <i (click)="getRayonUpdatedAtAsc()" class="fas fa-sort-up"></i>
+          <i (click)="getRayonUpdatedAtDesc()" class="fas fa-sort-down"></i>
+        </h5>
+        <h5 class="fw-bold sortItem">
+          Nombre produits :<i
+            (click)="getRayonQtetAsc()"
+            class="fas fa-sort-numeric-up-alt"
+          ></i>
+          <i
+            (click)="getRayonQteDesc()"
+            class="fas fa-sort-numeric-down-alt"
+          ></i>
+        </h5>
+      </div>
+    </mat-card>
+  </div>
   <div
     *ngFor="let item of rayon_list; let i = index"
-    class="col-12 col-md-6"
+    class="col-12 col-md-6 col-xl-4 mt-2"
   >
-    <!-- [style.backgroundColor]="item.produitList.length >= 0 ? 'black' : '#dc3545'" -->
     <div class="card">
       <div class="card-header">
         <div class="d-flex justify-content-between">
-          <h5 style="font-weight: bold; margin-top: 7px">{{ item.libelle | uppercase }}</h5>
+          <h5 style="font-weight: bold; margin-top: 7px">
+            {{ item.libelle | uppercase }}
+          </h5>
           <div>
             <button
               (click)="toogleUpdateRayon(item)"
@@ -60,29 +182,47 @@
         <p class="card-text">Code : {{ item.code }}</p>
         <p *ngIf="item.produitList.length == 0" class="card-text">
           Votre rayon est <span class="fontWeight">vide</span> ,il contient
-          <span class="fontWeight">{{ item.produitList.length }}</span> produits.
+          <span class="fontWeight">{{ item.produitList.length }}</span>
+          produits.
         </p>
         <p *ngIf="item.produitList.length != 0" class="card-text">
           Votre rayon contient
-          <span class="fontWeight">{{ item.produitList.length }}</span> produits.
+          <span class="fontWeight">{{ item.qte }}</span>
+          produits.
         </p>
-        <p class="card-text">
+        <p
+          [style]="item.updatedAt == null ? 'margin-bottom:2.7rem' : ''"
+          class="card-text"
+        >
           <span class="fontWeight"> Date creation : </span> {{ item.createdAt }}
         </p>
         <p *ngIf="item.updatedAt != null" class="card-text">
           <span class="fontWeight"> Date modification : </span>
           {{ item.updatedAt }}
         </p>
-
-        <button
-          [disabled]="item.produitList.length == 0"
-          style="color: white"
-          id="productListButton"
-          class="btn btn-dark"
-          [routerLink]="['/back/rayon/detailrayon', item.idRayon]"
+        <div
+          class="d-flex flex-wrap justify-content-between align-items-center"
         >
-          Afficher les produit
-        </button>
+          <button
+            [disabled]="item.produitList.length == 0"
+            style="color: white"
+            id="productListButton"
+            class="btn btn-dark"
+            [routerLink]="['/back/rayon/detailrayon', item.idRayon]"
+          >
+            Afficher les produit
+          </button>
+          <button
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdropAdd"
+            style="color: white"
+            class="btn btn-warning"
+            type="button"
+            (click)="getAllProduct(item.idRayon)"
+          >
+            Ajouter des produits
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -119,6 +259,89 @@
           (click)="delete()"
         >
           Confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="staticBackdropAdd"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">
+          Liste des produits disponible
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div style="height: 200px" class="table-responsive">
+          <table class="table table-success table-striped align-middle">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Libelle</th>
+                <th scope="col">Code</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Catégorie</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of productList; let i = index">
+                <th scope="row">{{ item.idProduit }}</th>
+                <td>{{ item.libelle }}</td>
+                <td>{{ item.code }}</td>
+                <td>{{ item.prixUnitaire }}</td>
+                <td>{{ item.detailProduit.categorieProduit }}</td>
+                <td>
+                  <i
+                    (click)="getProductid(item.idProduit)"
+                    class="fas fa-plus-circle"
+                    style="font-size: 1rem"
+                  ></i>
+                  <i
+                    (click)="retriveProduit(item.idProduit)"
+                    class="ml-1 fas fa-minus-circle"
+                    style="font-size: 1rem"
+                  ></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <span *ngIf="productList.length != 0">
+            Nombre des produits a ajouté :
+            <strong>{{ productIdList.length }}</strong>
+          </span>
+          <span *ngIf="productList.length == 0">
+            Il n'ya pas des produits disponible
+          </span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Annuler
+        </button>
+        <button
+          type="button"
+          [disabled]="productIdList.length == 0"
+          (click)="assignProductListToRayon()"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+        >
+          Ajouter
         </button>
       </div>
     </div>

@@ -125,13 +125,13 @@
 
 
 <div class="form__group field" #ida>
-  Id Client :<input type="number" style="font-size: small;" class="form__field" [(ngModel)]="salut">    
+  Id Client :<input type="number" style="font-size: small;width: 150px;" class="form__field" [(ngModel)]="salut">    
 </div>
 
 
 
 <div class="form__group field" #ida>
-  Id Produit :<input type="number" style="font-size: small;" class="form__field" [(ngModel)]="prodd">    
+  Id Produit :<input type="number"  style="font-size: small;width: 150px;" class="form__field" [(ngModel)]="prodd">    
 </div>
 
 <br>
@@ -174,26 +174,34 @@
 <h2>Consulter Note avec le client </h2>
 
 <div class="form__group field" #ida>
-  Id Client  :<input type="number" style="font-size: small;" class="form__field" [(ngModel)]="salut">    
+  Id Client  :<input type="number" style="font-size: small;width: 150px;" class="form__field" [(ngModel)]="salut">    
   </div>  
   <br>
 <button class="btn btn-primary" (click)="getAllNoteByClient(salut)">Consulter</button>
 
 
-<div *ngFor="let note of NoteListC">
-  <div class="card-body">
-    <h5 style="font-weight: 900;font-size:1rem;float: center;" class="card-title">
-Numéro de la note :{{note.idNote }}
-</h5>
-<h6 style="font-weight: 700" class="card-text">
-Note :{{note.noote }}/10
-</h6>
-<h6 style="font-weight: 700" class="card-text">
-Commentaire :{{note.coommentaire}}
-</h6>
-<h6 style="font-weight: 700" class="card-text">
-Note attribué le :{{note.dateNote}}
-</h6>
-</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Note N°</th>
+      <th scope="col">Note du produit</th>
+      <th scope="col">Commentaire</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let note of NoteListC">
+      <th scope="row" >{{note.idNote }}</th>
+      <td>{{note.noote }}/10</td>
+   {{note.coommentaire}}
+      <td>{{note.dateNote}}</td>
+    </tr>
+   
+  </tbody>
+</table>
 
-</div>
+
+
+
+
+

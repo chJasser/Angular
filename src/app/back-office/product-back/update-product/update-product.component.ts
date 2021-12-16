@@ -2,9 +2,12 @@ import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { detailProduit } from 'src/Model/detaiProduit';
+import { ImageModel } from 'src/Model/ImageModel';
 import { Produit } from 'src/Model/Produit';
+import { Rayon } from 'src/Model/Rayon';
 import { Stock } from 'src/Model/Stock';
 import { ProduitSService } from 'src/ServicesProduct/product-s.service';
+import { RayonService } from '../../rayon/rayon.service';
 import { StockService } from '../../stock/stock.service';
 
 @Component({
@@ -16,21 +19,69 @@ export class UpdateProductComponent implements OnInit {
   detailProduit: detailProduit;
   ListStock:Stock[];
   idStockProduit:number;
+  Image:any;
+  iddd:any;
+  stt:Stock;
+  rr:Rayon;
+  ImageAdd:ImageModel;
+  selectedFile: File;
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResonse: any;
+  message: string;
+  imageName: any;
+idRayonProduit:number;
+  ListRayon:Rayon[];
 
-  constructor(private ps:ProduitSService,private ss:StockService,private router:Router) { }
+  libelleStockChoisit:string="";
+  rayonChoisit:string="";
+
+
+  constructor(private ps:ProduitSService,private ss:StockService,private sr:RayonService,private router:Router) { }
   
   @Output() updateProductStatus = new EventEmitter<boolean>();
   @Input() selectedProduct: Produit;
   @Output() updated = new EventEmitter<Produit>();
+
+  getAllRayons(){
+    this.sr.getAllRayons().subscribe((res) => {
+      this.ListRayon = res;
+      console.log(this.ListRayon);
+    });
+  }
+
+  getAllStocks(){
+    this.ss.getAllStock().subscribe((res) => {
+      this.ListStock = res;
+      console.log(this.ListStock);
+    });
+  }
+  getIdRayon(id){
+    
+    console.log(id);
+    this.sr.getRayonById(id).subscribe((res) =>{
+       this.idRayonProduit=Number(res.idRayon);
+       console.log(this.idRayonProduit);
+    });
+  }
+
   ngOnInit(): void {
-
-
+    this.getAllStocks();
+    this.getAllRayons();
 console.log(this.selectedProduct);
 
+  }
+  getLibelle(libelle:string){
+    this.libelleStockChoisit=libelle;
+  }
+  getRayon(libelleRayon:string){
+    this.rayonChoisit=libelleRayon;
   }
   Product: FormGroup;
   myProduct: any;
   ngOnChanges(changes: SimpleChanges) {
+    
+
     if (changes.selectedProduct.firstChange) {
       this.Product = new FormGroup({
         id: new FormControl(this.selectedProduct.idProduit),
@@ -101,7 +152,7 @@ console.log(this.selectedProduct);
       this.Product.get('libelle').value,
       this.Product.get('prixUnitaire').value,
   this.detailProduit,
-      null
+   this.selectedProduct.Image
     );
     console.log(this.myProduct);
     this.ps.updateProduct(this.myProduct,this.Product.get('id').value).subscribe((res) => {

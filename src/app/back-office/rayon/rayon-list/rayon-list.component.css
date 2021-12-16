@@ -1,8 +1,43 @@
+.card {
+  min-height: 16rem;
+}
+.btn {
+  padding: 1 !important;
+}
 .RayonVide {
   color: white;
 }
-.fontWeight
-{
+.fontWeight {
   font-weight: 700;
   color: red;
+}
+.sortSection {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0 0;
+}
+.sortSection h5 {
+  margin: 0 0;
+}
+.sortItem i {
+  color: #0858d8cf;
+  cursor: pointer;
+  margin: 0 0.5rem 0 0;
+  transition: ease-in-out 0.2s;
+  font-size: 1rem;
+}
+.sortItem i:hover {
+  color: #0c0093;
+}
+@media screen and (max-width: 1199px) {
+  .sortSection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .sortSection h5 {
+    margin: 0.3rem 1rem;
+  }
 }

@@ -24,6 +24,7 @@ export class UpdateStockComponent implements OnInit {
   stock: FormGroup;
   myStock: any;
   ngOnChanges(changes: SimpleChanges) {
+
     if (changes.selectedStock.firstChange) {
       this.stock = new FormGroup({
         idStock: new FormControl({
@@ -65,9 +66,12 @@ export class UpdateStockComponent implements OnInit {
     this.myStock = new Stock(
       this.stock.get('qteMin').value,
       this.stock.get('libelleStock').value,
-      this.stock.get('idStock').value
+      this.stock.get('idStock').value,
+      this.selectedStock.createdAt,
+      this.selectedStock.updatedAt,
+      this.selectedStock.qte,
+      this.selectedStock.checked
     );
-    this.myStock.createdAt = this.selectedStock.createdAt;
     console.log(this.myStock);
      this.stockService.updateStock(this.myStock).subscribe((res) => {
 

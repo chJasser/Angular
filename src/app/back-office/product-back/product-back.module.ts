@@ -12,6 +12,7 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 import { DetailProductBackComponent } from './detail-product-back/detail-product-back.component';
 import { AssignProductTorayonComponent } from './assign-product-torayon/assign-product-torayon.component';
 import { RevenuBrutComponent } from './revenu-brut/revenu-brut.component';
+import { ChartProductComponent } from './chart-product/chart-product.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RevenuBrutComponent } from './revenu-brut/revenu-brut.component';
     UpdateProductComponent,
     DetailProductBackComponent,
     AssignProductTorayonComponent,
-    RevenuBrutComponent
+    RevenuBrutComponent,
+    ChartProductComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

@@ -4,13 +4,17 @@
 
       <div class="search-hotel" style="margin-left: 3rem;">
          <h3 class="agileits-sear-head">Chercher par libelle..</h3>
-         
-<!--             <input type="search" [(ngModel)]="libelle" #it="ngModel"  (keyup)="getProductBylibelle(libelle)" placeholder="Product libelle..." name="search" required="">         
- -->    
- 
- 
- 
- 
+
+
+            <input type="search" [(ngModel)]="libelle" #it="ngModel"  (keyup)="getProductBylibelle(libelle)" placeholder="Product libelle..." name="search" required="">
+            <i class="fas fa-search"  style="margin-left: 1rem;" (click)="getProductBylibelle(libelle)"></i>
+
+<!--             <input type="search" [(ngModel)]="libelle" #it="ngModel"  (keyup)="getProductBylibelle(libelle)" placeholder="Product libelle..." name="search" required="">
+ -->
+
+
+
+
  <input
    matInput
    type="search"
@@ -21,7 +25,7 @@
  />
 
  PrixUnitaire:
- 
+
  Min: {{minValue}}
  <mat-slider
                 class="w-100"
@@ -35,7 +39,7 @@
                 search(p.value, date1.value, date2.value, slider.value,categoriess.value)
                 "
                 aria-label="units"
-                
+
               >
               <div style="text-align:right;">
                Max: {{maxValue}}
@@ -69,19 +73,24 @@
                </mat-form-field>
              </div>
 
- 
+
  <!--    <i class="fas fa-search"  style="margin-left: 1rem;" (click)="getProductBylibelle(libelle)"></i> -->
+
       </div>
  <!-- price range -->
 <!--  <div class="range" style="margin-top: 3rem;" >
    <h3 class="agileits-sear-head" style="margin-left: 2rem;font-weight: bold;">Prix unitaire:</h3>
    <div style="margin: 1.5rem;">
-      <div style="margin-right: 1.5rem;">{{prix}}</div> 
+      <div style="margin-right: 1.5rem;">{{prix}}</div>
       </div>
    <ul class="dropdown-menu6">
      <li>
 <div>
-        
+
+
+   <div>Min: {{minValue}}<input type="range" [(ngModel)]="prix" [value]="prix" #it1="ngModel" name="price" [min]="minValue" [max]="maxValue">
+
+
    <div>Min: {{minValue}}
       <input type="range" [(ngModel)]="prix" [value]="prix" #it1="ngModel" name="price" [min]="minValue" [max]="maxValue"/>
    </div>
@@ -101,7 +110,6 @@
 
 </style>
 
-
      <div class="left-side" style="margin-top: 3rem;margin-left: 3rem;">
       <h3 class="agileits-sear-head" style="font-weight: bold;">Catégorie:</h3>
      <select name="category" id="category" value="" #categoriess style="background-color:sandybrown; color:whitesmoke;width: 200px;"  (change)="search(p.value, date1.value,date2.value,slider.value,categoriess.value)">
@@ -109,7 +117,7 @@
       <option value="Electromenager">Electromenager</option>
       <option value="Alimentaire">Alimentaire</option>
       <option value="Quincaillerie">Quincaillerie</option>
-  
+
     </select>
 
     </div> 
@@ -133,7 +141,7 @@
               <input type="checkbox" class="checked"  (change)="toggleEditable($event)">
               <span class="span">Quincaillerie</span>
            </li>
-          
+
         </ul>
      </div> -->
      <!-- // preference -->
