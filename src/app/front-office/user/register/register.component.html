@@ -85,6 +85,17 @@
             required
             #password="ngModel"
           />
+          <label for="dateNaissance"> Profession  : </label>
+          <select required [(ngModel)]="form.profession"  #profession="ngModel" class="form-select" aria-label="Default select example" name="profession">
+            <option selected> Profession : </option>
+            <option value="Docteur">Docteur</option>
+            <option value="Ingénieur">Ingénieur</option>
+            <option value="Etudiant">Etudiant</option>
+            <option value="Commercial">Commercial</option>
+            <option value="Cadre">Cadre</option>
+            <option value="Autre">Autre</option>
+          </select>
+
             <label for="dateNaissance">Date de naissance : </label>
             <input
               type="text"
@@ -94,7 +105,7 @@
               required
               #dateNaissance="ngModel"
             />
-            <div id="naissanceHelp" class="form-text">Format dd/MM/YYY </div>
+            <div id="naissanceHelp" class="form-text">Format dd/MM/YYYY </div>
 
           <div class="alert-danger" *ngIf="password.errors && f.submitted">
             <div *ngIf="password.errors.required">Password is required</div>

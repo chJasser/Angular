@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ModifierComponent } from './modifier/modifier.component';
 
 
 
@@ -13,6 +14,7 @@ import { CommonModule } from '@angular/common';
   declarations: [LoginComponent,
     RegisterComponent,
     ProfileComponent,
+    ModifierComponent,
   ],
   imports: [
     CommonModule,

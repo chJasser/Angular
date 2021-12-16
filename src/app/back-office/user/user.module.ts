@@ -8,7 +8,8 @@ import { ListUsersComponent } from './list-users/list-users.component';
 import { UserActionButtonComponent } from './user-action-button/user-action-button.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ActionButtonComponent } from './action-button/action-button.component';
-
+import { ChartClientsComponent } from './chart-clients/chart-clients.component';
+import { Chart } from  'node_modules/chart.js';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ActionButtonComponent } from './action-button/action-button.component';
     AddAdminComponent,
     ListUsersComponent,
     UserActionButtonComponent,
-    ActionButtonComponent
+    ActionButtonComponent,
+    ChartClientsComponent
   ],
   imports: [
     CommonModule,
